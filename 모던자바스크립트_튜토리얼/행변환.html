@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>문자열 변환</h3>
+    <p class="chapter_1"></p>
+    <h3>숫자열 변환</h3>
+    <p class="chapter_2"></p>
+    <h3>블린 변환</h3>
+    <p class="chapter_3"></p>
+    <script>
+        'use strict'
+
+        // 함수와 연산자에 전달되는 값은 대부분 적절한 자료형으로 자동 변환됩니다. 이런 과정을 "형 변환(type conversion)"이라고 합니다.
+        
+        const chapter_1 = document.querySelector('.chapter_1')
+        const chapter_2 = document.querySelector('.chapter_2')
+        const chapter_3 = document.querySelector('.chapter_3')
+        //console로 보기 너무 귀찮
+        let value = true;
+        chapter_1.innerHTML = `${typeof chapter_1}`
+        //블린 타입
+
+        value = String(value)
+        //벨류의 값은 원래 블린이였는데 string으로 인해 스트링 값으로 치환
+        chapter_1.innerHTML = `${typeof value}`
+        //스트링 타입 String(value) 함수를 호출해 전달받은 값을 문자열로 변환
+
+        //숫자형 변환
+        chapter_2.innerHTML = "6"/"2" //수학과 관련된 함수와 표현식에서 자동으로 일어남 숫자가 아닌 스트링 타입에 나누기가 들어가니 나눠짐 문자열임에 불구하고
+        
+        let str = "123";
+        chapter_2.innerHTML = `${typeof str}`; //string
+
+        let num = Number(str);
+        //값을 문자 기반 폼(form)을 통해 입력받는 경우엔, 이런 명시적 형 변환이 필수
+        chapter_2.innerHTML = `${typeof num}`
+
+
+        //숫자 이외의 글자가 들어가 있는 문자열을 숫자형으로 변환하려고 하면, 그 결과는 NaN
+        let age = Number("임의의 문자열 123")
+        chapter_2.innerHTML = `${age}`
+        // null= 0, undefined = NaN
+        // 숫자로 변환하는 과정 중 문자열이 있으면 변환 불가 
+        
+        /*
+        전달받은 값	    형 변환 후
+        undefined	          NaN
+        null	               0
+        true and false	    1 과 0
+        string	            문자열의 처음과 끝 공백이 제거됩니다. 공백 제거 후 남아있는 문자열이 없다면 0, 그렇지 않다면 문자열에서 숫자를 읽습니다. 변환에 실패하면 NaN이 됩니다. 
+
+        alert( Number("123") ); // 123
+        alert( Number("123z") );      // NaN ("z"를 숫자로 변환하는 데 실패함)
+        alert( Number(true) );        // 1
+        alert( Number(false) );       // 0
+
+        null과 undefined은 숫자형으로 변환 시 결과가 다르다는 점에 유의. null은 0이 되고 undefined는 NaN
+        */
+
+        //블린형
+        chapter_3.innerHTML = `${Boolean(1)}` //true
+        chapter_3.innerHTML = `${Boolean(0)}` //false
+        chapter_3.innerHTML = `${Boolean('안녕')}` //true
+        chapter_3.innerHTML = `${Boolean('')}` //false [빈 문자열이기 때문에]
+        //블린 값은 안에 값이 있다면 트루 값 리턴, 아니면 펄스 값 리턴 단 0은 펄스
+
+        //예외 
+        //숫자형으로 변환 시 undefined는 0이 아니라 NaN이 됩니다.
+        //문자열 "0"과 " "같은 공백은 불린형으로 변환 시 true가 됩니다.
+
+    </script>
+</body>
+</html>
