@@ -7,7 +7,224 @@
 </head>
 <body>
     <script>
+    /*
+    단어 정리 
+    - 피연산자 : 연산을 수행하는 대상 (5 * 2 = 10 일 때 5, 2가 피연산자 [인수라고 불리기도 함])
+    - 단항연산자 : 피연산자를 하나만 받는 연산자는 단항 연산자라고 부름 부호를 뒤집는 단항 마이너스 연산자는 - 가 대표적인 예
+    - 이항연산자 : 두개의 피연산자를 받는 연산자 (5 * 2 = 10 피연산자가 2개라서 이항연산자)
+    수학 연산자
+    +, -, *, /, %(나머지), **(거듭제곱)
+    */
+    </script>
+    <h2>기본연산자와 수학</h2><br/>
+    <hr/>
+    <h3>거듭제곱 예시</h3>
+    <p class="show_1"></p>
+    <script>
         'use strict'
+        //거듭제곱 예시
+        var show_1 = document.querySelector('.show_1')
+        show_1.innerHTML = `${2**2}` //2의 2제곱, 2**3 = 2의 3제곱
+    </script>
+    <hr/>
+    <h3>이항 연산자 '+'와 문자열 연결</h3>
+    <p class="show_2"></p>
+    <script>
+        'use strict'
+        let show_2 = document.querySelector('.show_2')
+        let show_2_a = "my" + "string" ;
+        let show_2_b = '1' + 2 ;
+        let show_2_c = 2 + '1' ;
+        let show_2_d = 2 + 2 + '1' ;
+        show_2.innerHTML = show_2_a
+        //연산자에 문자열이 들어가면 문자열을 더함
+    </script>
+
+    <hr/>
+
+    <h3>단항 연산자 +와 숫자형으로의 변환</h3>
+    <p class="show_3"></p>
+    <script>
+        'use strict'
+        let show_3 = document.querySelector('.show_3')
+
+        let show_3_a = (+1);
+        // 숫자에 단항 덧셈 연산자를 붙이면 아무런 동작도 하지 않음 (let x = 1; console.log(+x) = 1),
+
+        let show_3_b = (+true);
+        /*
+        하지만 피연사자가 숫자가 아닐 경우에는 숫자형으로 변환
+        var a = '123'
+        Number(a) => +a로 하면 숫자형으로 변환 됌 [alert(+true) = 1 true는 1이라서 가능, alert(+"") => 0 공백은 0값 ]
+        */
+
+        let apples = '2', oranges ='3'
+        // 이런 방법도 있지만 학습한 걸 응용하면 let show_4_c = Number(apples) + Number(oranges);
+        let show_4_c = +apples + +oranges;
+        show_3.innerHTML = show_4_c;
+        /* 
+        개발을 하다 보면 문자열을 숫자로 변환해야 하는 경우가 자주 생깁니다.
+        HTML 폼(form) 필드에서 값을 가져왔는데 그 값이 문자형일 때 같이 말이죠. 실제로 폼에서 가지고 온 값은 대개 문자열 형태입니다.
+        이항 덧셈 연산자를 사용하면 아래와 같이 값이 문자열로 변해서 연결될 겁니다.
+        alert(apples + oranges) = 23
+        */
+    </script>
+
+    <hr/>
+
+    <h3>연산자 우선순위</h3>
+    <p>이항 덧셈 연산자보다 단항 덧셈 연산자가 먼저 적용되는 이유</p>
+    <p class="show_4"></p>
+    <script>
+        // 자바스크립트에서 정의한 연산자 우선순위가 마음에 들지 않는다면, 괄호를 사용
+        // 괄호는 모든 연산자보다 우선순위가 높음
+        // '단항 덧셈 연산자’는 우선순위 17로, '(이항) 덧셈 연산자’의 우선순위 13보다 높음
+        // 표현식 "+apples + +oranges"에서 단항 덧셈 연산자가 덧셈보다 먼저 수행되는 이유가 바로 이것 때문
+    </script>
+
+    <hr/>
+
+    <h3>할당 연산자</h3>
+    <p>무언가를 할당할 때 쓰이는 연산자 (=)</p>
+    <p class="show_5"></p>
+    <script>
+        'use strict'
+        let show_5 = document.querySelector('.show_5')
+        let x = 2 * 2 + 1
+        // 자바스크립트에서 대부분의 연산자들은 값을 반환 +와 -뿐만 아니라 = 역시 값을 반환
+
+        let show_5_a = 1;
+        let show_5_b = 2;
+        let show_5_c = 3 - (show_5_a = show_5_b + 1);
+        // a = b + 1; a = 2 + 1; 비교식이 아닌 계산식으로 보면 됌
+        // x = value을 호출하면 value가 x에 쓰여지고, 이에 더하여 value가 반환
+        show_5.innerHTML = show_5_c;
+    </script>
+    <h4>할당 연산자 체이닝 (여러개 연결)</h4>
+    <p class="show_5-1"></p>
+    <script>
+        'use strict'
+        let show_5_1 = document.querySelector('.show_5-1')
+
+        let show_5_1_a,show_5_1_b,show_5_1_c;
+        show_5_1_a = show_5_1_b = show_5_1_c = 2 + 2;
+        // 할당 연산자를 여러 개 연결한 경우, 평가는 우측부터 진행
+        // 가장 우측의 2 + 2가 평가되고, 그 결과가 좌측의 c, b, a에 순차적으로 할당
+        
+
+        //그런데 되도록이면 연산자를 체이닝 하는것 보다 가독성을 위해 아래와 같이 줄을 나눠 코드를 작성하길 권유
+        show_5_1_c = 4;
+        show_5_1_b = show_5_1_c;
+        show_5_1_a = show_5_1_c;
+        show_5_1.innerHTML = show_5_1_a;
+    </script>
+
+    <hr/>
+
+    <h3>복합 할당 연산자</h3>
+    <p>프로그램을 짜다 보면, 변수에 연산자를 적용하고 그 결과를 같은 변수에 저장해야 하는 경우가 종종 생깁니다.</p>
+    <p class="show_6"></p>
+    <script>
+        'use strict'
+        let show_6 = document.querySelector('.show_6')
+        let show_6_a = 2;
+        show_6_a += 5;
+        // (n = n + 5와 동일).
+        show_6_a *= 2;
+        // (n = n * 2와 동일).
+        show_6.innerHTML = show_6_a;
+        // 산술 연산자와 비트 연산자에도 적용할 수 있음
+
+        let show_6_b = 2;
+        show_6_b *= 5 + 3 ;
+        show_6.innerHTML = show_6_b;
+        // 복합 할당 연산자의 우선순위는 할당 연산자와 동일
+        // 대부분 다른 연산자가 실행된 후에 복합 할당 연산자가 실행
+        // 16  (*=의 우측이 먼저 평가되므로, 위 식은 n *= 8과 동일합니다.)
+    </script>
+
+    <hr/>
+
+    <h3>증감 / 감소 연산자</h3>
+    <p>counter = 2</p>
+    <h4>증감 연산자 ++ (변수를 1 증가)</h4>
+    <p class="show_7"></p>
+    <h4>감소 연산자 -- (변수를 1 감소)</h4>
+    <p class="show_7_1"></p>
+    <h4>후위형과 전위형</h4>
+    <p class="show_7_2"></p>
+    <script>
+        'use strict'
+        let show_7 = document.querySelector('.show_7')
+        let show_7_1 = document.querySelector('.show_7_1')
+        let show_7_2 = document.querySelector('.show_7_2')
+        let counter = 2;
+        counter++;
+        show_7.innerHTML = counter;
+        counter--;
+        show_7_1.innerHTML = counter;
+        // 증가/감소 연산자는 변수에만 쓸 수 있습니다. 5++와 같이 값에 사용하려고 하면 에러가 발생합니다.
+
+        
+        let show_7_counter = 1;
+        let show_7_a = show_7_counter++;
+        show_7_2.innerHTML = show_7_a;
+        //값을 증가시키고 난 후, 증가한 값을 바로 사용하려면 전위형 증가 연산자를 사용하면 됩니다(++변수).
+        //값을 증가시키지만, 증가 전의 기존값을 사용하려면 후위형 증가 연산자를 사용하면 됩니다 (변수++).
+        /*
+            let counter = 1;
+            alert( 2 * ++counter ); // 4
+            let counter = 1;
+            alert( 2 * counter++ ); // counter++는 '기존'값을 반환하기 때문에 2가 출력됩니다.
+            이렇게 코드를 작성하는 게 기술적으로 문제가 있는 것은 아니지만, 한 줄에서 여러 가지 일을 동시에 하고 있기 때문에 코드의 가독성이 떨어집니다.
+
+            let counter = 1;
+            alert( 2 * counter );
+            counter++;
+        */
+    </script>
+
+    <h3>쉼표 연산자</h3>
+    <p>코드를 짧게 쓰려는 의도로 가끔 사용</p>
+    <p class="show_8"></p>
+    <script>
+        'use strict'
+        let show_8 = document.querySelector('.show_8')
+        //마지막 표현식의 평가 결과만 반환되는 점에 유의
+
+        let show_8_a = (1 + 2, 3 + 4);
+        show_8.innerHTML = show_8_a;
+        /*
+        =보다 더 낮아서 엄청 나중에 수행 됌. 가로 안에 넣어 =보다 높게 해야함
+        괄호가 없으면 a = 1 + 2, 3 + 4에서 +가 먼저 수행되어 a = 3, 7이 됩니다. 
+        할당 연산자 =는 쉼표 연산자보다 우선순위가 높기 때문에 a = 3이 먼저 실행되고, 
+        나머지(7)는 무시되죠. (a = 1 + 2), 3 + 4를 연산한 것처럼 될 겁니다.
+        */
+
+
+        //과제 
+        /*
+        "" + 1 + 0 = "10" -> 앞에 문자열 이고 뒤에는 +가 붙어서 문자열로 변환.
+        "" - 1 + 0 = -1 -> 앞에 문자열이고 뒤에는 -가 붙어서 ""는 0으로 변환
+        true + false = 1 -> true = 1, false = 0
+        6 / "3" = 2 -> 자바스크립트가 문자열을 상수로 봄 /가 있어서
+        "2" * "3" = 6 -> 자바스크립트가 문자열을 상수로 봄 *가 있어서
+        4 + 5 + "px" = "9px" -> 1번과 같은 문제
+        "$" + 4 + 5 = "$45" -> 1번과 같은 문제
+        "4" - 2 = 2 -> ""가 아니고 안에 숫자가 있어서 뺄셈 가능
+        "4px" - 2 = NaN ->글자를 나눌 수가 없어서
+        7 / 0 = Infinity -> 0으로 나눌 수 없어서
+        "  -9  " + 5 = " -9 5 " -> 1번과 같은 문제
+        "  -9  " - 5 = -14 -> 2번과 같은 문제
+        null + 1 = 1 ->null = 0
+        undefined + 1 = NaN -> undefinded 숫자로 변환시 NaN
+        " \t \n" - 2 = -2
+
+        "\t \n" -2
+        문자열이 숫자형으로 변할 땐 문자열 앞뒤의 공백이 삭제됩니다. 
+        뺄셈 연산자 앞의 피연산자는 공백을 만드는 문자 \t와 \n, 그 사이의 “일반적인” 공백으로 구성됩니다.
+         따라서 " \t \n"는 숫자형으로 변환 시 길이가 0인 문자열로 취급되어 숫자 0이 됩니다.
+        */
     </script>
 </body>
 </html>
