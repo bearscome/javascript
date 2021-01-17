@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .div {
+            width: 400px;
+            background-color: red;
+            padding-top: 100px;
+            display: flex;
+            align-items: center;
+        }
+        .position {
+            position: relative;
+        }
+    </style>
+</head>
+<body class="body">
+    <button type="submit" onclick="color('red')">
+        안녕
+    </button>
+    <p class="position">
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+    </p>
+</body>
+<script>
+    var Body = {
+        change : function(color) {
+            const alist = document.querySelectorAll('a')
+            var i = 0
+            for(var i = 0; i<alist.length; i++){
+                    alist[i].style.color = color;
+            }
+
+        }
+    }
+    function color(color) {
+        Body.change(color)
+    }
+
+    
+</script>
+</html>

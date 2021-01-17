@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Function</h1>
+    <h2>Basic</h2>
+    <ul>
+        <script>
+            function two() {
+                document.write('<li>2-1</li>')
+                document.write('<li>2-2</li>')
+            }
+            document.write('<li>1</li>')
+            two()
+            document.write('<li>3</li>')
+            two()
+        </script>
+    </ul>
+    <h2>Parameter & Argument</h2>
+    <h2>Return</h2>
+    <script>
+        function onePlusOne(){
+            document.write(1+1 + '<br/>')
+        }
+        onePlusOne()
+        function sum(left,right){
+            document.write(left + right+ '<br>')
+        }
+        function sumredColor(left, right){
+            document.write("<div style='color:red'>"+left + right +"</div>")
+        }
+        sum(2,3)
+        sumredColor(9,9)
+        sum(3,4)
+        function add_2(x,y){
+            return x+y
+        }
+        document.write(add_2(8,8))
+        //return문
+        //함수는 실행하고 끝난다. 하지만 return을 적을경우 함수가 끝나도 그 값은 다시 되돌려줘서, 값이 남는다.
+        //return을 해야 내가 원하는 값을 볼 수 있다. 만약 return문을 작성을 안하면 함수는 끝나고 값은 리턴이 안되어서 값을 출력을 못한다.
+        function multiful(){
+            i = 0;
+            j = 0;
+            for(i=0; i<10; i++) {
+                for( j=0; j<10; j++) {
+                    return i * j
+                }
+            }
+        }
+        document.write(multiful())
+    </script>
+</body>
+</html>

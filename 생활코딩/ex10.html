@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Object</h1>
+    <h2>Create</h2>
+    <script>
+        var coworked = {
+            "programer" : "egoing",
+            "designer" : "leezche",
+        }
+        document.write("programmer : " + coworked.programer + "<br/>")
+        document.write("disigner : " + coworked.designer + "<br/>")
+        coworked.bookeeper = "ggg" ; 
+        document.write("disigner : " + coworked.bookeeper + "<br/>")
+        coworked["data scientist"] = "teaho"
+        //띄어쓰기가 있는 경우에는 대가로를 이용하여 작성하면 됌
+        document.write("data scientist : " + coworked["data scientist"] + "<br/>")
+        document.write("<br/>")
+
+    </script>
+    <h2>Property & Method</h2>
+    <script>
+        coworked.showAll = function() {
+            for(var key in this){
+                document.write(key +" : " + this[key] + '<br/>')
+            }
+        }
+        coworked.showAll();
+    </script>
+</body>
+</html>

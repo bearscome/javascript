@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id = "counter">0</div>
+    <button id = "increase">+</button>
+    <button id = "decrease">-</button>
+</body>
+<script>
+    const $counter = document.querySelector('#counter')
+    const $increase = document.querySelector('#increase')
+    const $decrease = document.querySelector('#decrease')
+    const render = function (){$counter.innerHTML = num;}
+
+    let num = 0;
+    let i =0;
+    const while_99 = function() {
+        for(i=1; i<10; i++) {
+            console.log(i)
+            for(j=1; j<10; j++){
+                console.log(j)
+            }
+        }
+    }
+    
+    
+
+    $increase.onclick = function(){
+        while_99()
+        
+    }
+
+    $decrease.onclick = function(){
+        num--;
+        render()
+        console.log('현재숫자는', num)
+    }
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+    <!--     const $content = document.getElementById("counter");
+        const $increase = document.getElementById("increase");
+        const $decrease = document.getElementById("decrease");
+    
+        let num = 0;
+        const render = function() {$content.innerHTML = num;}
+        //document.write 전체에 작용, innerHTML은 해당 돔에만 작용
+        
+        $increase.onclick = function() {
+            num++;
+            console.log('increase 버튼 클릭',num);
+            render()
+        }
+    
+        $decrease.onclick = function() {
+            num--;
+            console.log('decrease 버튼 클릭',num);
+            render()
+        } -->
+</html>
