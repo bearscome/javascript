@@ -87,6 +87,17 @@
         null이나 undefined가 될 확률이 있는 변수가 > 또는 <의 피연산자로 올 때는 주의를 기울이시기 바랍니다.
         null/undefined 여부를 확인하는 코드를 따로 추가하는 습관을 들이길 권유합니다.
         */
+
+
+        /*
+        5 > 4 true 5는 4보다 크다.
+        "apple" > "pineapple" false 사전적으로 p가 더 뒤에 있어서 펄즈
+        "2" > "12" true 2번과 같은 맥락
+        undefined == null true 두개의 비교는 가능
+        undefined === null false 두개는 일치하지 않음
+        null == "\n0\n" false null은 오직 undefined에만 일치
+        null === +"\n0\n" false 형이 다름
+        */
     </script>
 </body>
 </html>
