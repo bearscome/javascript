@@ -203,11 +203,15 @@
             순으로 진행하기 때문에 똑같은 0 ~ 4 출력
         */
         
-        let num = 0;
-        while(num < 100) {
-            num = +prompt('숫자입력','')
-            if(!num) break;
+        let n = 10; //2부터 n까지니까 
+        outer:
+        for(let i = 2; i<=n; i++) {
+            for(let j = 2; j<i; j++) {//j<=i면 j가 i랑 같으면 나누면 0이 되나까 안됌
+                if(i % j == 0) continue outer; //계산하거나 알고리즘할 때 for중첩이 많이 나올 것 같암..
+            }
+            console.log(i)
         }
+        
     </script>
 </body>
 </html>
