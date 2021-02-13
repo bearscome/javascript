@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>끝말잇기</h1>
+    </header>
+    <main>
+        <input type="text" class="text" value=""/>
+        <button type="button" class="submit">보내기</button>
+        <p class="show_text">
+            지금까진 쓴 단어
+            <p class="usedWrold"></p>
+        </p>
+    </main>
+</body>
+<script>
+    const word_list = ["호랑이"]
+    const wordInput = document.getElementsByClassName('text')[0]
+    const usedWord = document.getElementsByClassName('usedWrold')[0];
+    const submit = document.getElementsByClassName('submit')[0]
+
+    //버튼클릭
+    submit.addEventListener('click', function(e){
+        const textValue = wordInput.value;
+        main(textValue)
+    })
+
+    //인풋 엔터
+    wordInput.addEventListener('keypress', function(e){
+        if(e.keyCode == 13) {
+            const textValue = wordInput.value;
+            main(textValue)
+        }
+    })
+
+    //단어 추가
+    function addWordList(word) {
+        word_list.push(word)
+        console.log(word_list.indexOf(word))
+        if(word_list.indexOf(word) != -1) {
+            console.log("중복")
+        }
+        console.log(word_list)
+    }
+
+    //중복단어 제거 후 새 배열 입력
+    function overlapWord(word) {
+        const filterWord = word_list.filter(function(a, index, self) {
+            return self.indexOf(a) === index;
+        })
+        usedWord.innerHTML = filterWord
+        console.log(filterWord)
+    }
+
+
+    function main(textValue) {
+        addWordList(textValue)
+        overlapWord(textValue)
+    }
+
+    /*
+        input의 벨류값을 맨위에 올려놓으면 클릭을 안하니 당연히 벨류값을 못가져오지..
+        선언만 해놨으니 당연이 빈 값만 있는거니까
+        버튼을 클릭해야 이제 input의 벨류를 가져 올 수 있는거지... 삽질했네 오질나게 했네 하..;
+    */
+
+</script>
+</html>
