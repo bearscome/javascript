@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0; 
+            padding: 0;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        header {
+            width: 100%;
+            padding: 1rem;
+            background-color: #3b5999;
+            color: #fff;
+        }
+        main {
+            margin-top: 3rem;
+
+        }
+        main > p {
+            font-size: 80px;
+            color: #3b5999;
+        }
+        .input-box {
+            margin-top: 2rem;
+        }
+        .word {
+            width: 300px;
+            padding: .5rem;
+        }
+        .info {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 2rem;
+            font-size: .8rem;
+        }
+        .time, .score {
+            font-size: 30px;
+        }
+        .time {
+            margin-right: 20px;
+        }
+        .button {
+            width: 200px;
+            height: 35px;
+            margin-top: 3rem;
+            border: none;
+            background-color: #3b5999;
+            color: #fff;
+            cursor: pointer;
+        }
+        .loading {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>타이핑 마스터</h1>
+    </header>
+    <main>
+        <p class="wordChage">Hello</p>
+        <div class="input-box">
+            <input type="text" class="wordInput">
+        </div>
+        <div class="info">
+            <p>남은시간 : <span class="time">0</span>초</p>
+            <p>회득점수 : <span class="score">0</span>점</p>
+        </div>
+    </main>
+    <footer>
+        <button class="button loading"> 게임을 불러오는 중...</button>
+    </footer>
+    
+    <script>
+        const wordInput = document.querySelector('.wordInput')
+        const wordChage = document.querySelector('.wordChage')
+        const answerScore = document.querySelector('.score')
+        const timeCount = document.querySelector('.time')
+        const button = document.querySelector('.button')
+        const GAME_TIME_SETTING = 3
+
+        let time = GAME_TIME_SETTING;
+        let words = [];
+        let score = 0;
+        let isPlaying = false;
+        let timeInterval;
+        let checkInterval;
+
+        init() // 시작
+    
+        function init() { // 시작 함수
+            getWord()
+            wordInput.addEventListener('input', checkMatch());
+        }
+
+        button.addEventListener('click', function() { //게임 실행
+            time = GAME_TIME_SETTING;
+            timeInterval = setInterval(countDown,1000);
+            isPlaying = true;
+            answerScore.innerHTML = 0;
+            checkInterval = setInterval(checkStatus, 50)
+            wordInput.focus()
+            button.innerHTML = "게임중"
+        })
+
+        function checkStatus() {
+            if(!isPlaying && time === 0) {
+                chageButton("게임종료...")
+                clearInterval(checkInterval)
+            }
+        }
+
+        function getWord() { // 단어 배열
+            words = ["Hello", "Banana", "Apple", "Cherry"];
+            chageButton("게임시작")
+        }
+
+
+        function checkMatch() { //단어 일치 함수
+            //console.log(this.value.toLowerCase() === wordChage.innerHTML.toLowerCase()) toLowerCase() 소문자로 변경
+            if(wordInput.value.toLowerCase() === wordChage.innerHTML.toLowerCase()) {
+                wordInput.value = ""
+                if(!isPlaying) {
+                    return;
+                }
+                score++
+                answerScore.innerHTML = score
+
+                const randomIndex = Math.floor(Math.random() * words.length) 
+                wordChage.innerHTML = words[randomIndex]
+            }
+        }
+        
+
+        function countDown() {
+            time > 0 ? time-- : isPlaying = false;
+            timeCount.innerHTML = time;
+            if(!isPlaying) {
+                clearInterval(timeInterval)
+            }
+        };
+
+        function chageButton(text) {
+            button.innerHTML = text;
+            text === "게임시작" ? button.classList.remove("loading") : button.classList.add("loading")
+        }
+    </script>
+</body>
+</html>

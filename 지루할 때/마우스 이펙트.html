@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* reset */
+@font-face { 
+    font-family: 'NEXON Lv1 Gothic OTF'; 
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+    font-weight: normal; 
+    font-style: normal; 
+}
+
+*, *::before, *::after {
+    box-sizing: border-box; 
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.2s;
+}
+
+a:hover {
+    border-bottom: 1px dashed #fff;
+}
+
+img {
+    width: 100%;
+    vertical-align: top;
+}
+
+ul {
+    padding: 10px 20px;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    background: url(../assets/img/su02.jpg) no-repeat center center;
+    background-size: cover;
+    color: #fff;
+    height: 100vh;
+    transition: all 0.2s;
+    overflow: hidden;
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: 'NEXON Lv1 Gothic OTF';
+    cursor: none;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(13, 28, 3, 0.9);
+    z-index: -1;
+}
+
+/* info */
+.info {
+    position: absolute;
+    z-index: 1000;
+}
+
+.info h1 {
+    font-size: 20px;
+    border-bottom: 1px dashed #fff;
+    margin-bottom: 8px;
+}
+
+.info p, .info li {
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 3px;
+}
+
+.info li.active a:last-child {
+    background: #fff;
+    color: #000;
+}
+
+.info.left {
+    left: 20px;
+    top: 20px;
+}
+
+.info.right {
+    right: 10px;
+    top: 10px;
+}
+
+.info.right a {
+    display: inline-block;
+    margin-left: 5px;
+    width: 20px; height: 20px;
+    border: 1px dashed #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    transition: all 0.2s;
+}
+
+.info.right a:hover {
+    background: #fff;
+    color: #000;
+}
+
+.info.bottom {
+    left: 10px;
+    bottom: 10px;
+}
+
+.info.view {
+    right: 20px;
+    bottom: 20px;
+}
+
+.info.view a {
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 30px;
+    padding: 5px 30px;
+}
+
+@media (max-width: 800px){
+    .info.bottom {display: none;}
+    .info.right {display: none;}
+}
+
+/* main */
+.contents {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.contents p {
+    max-width: 70vw;
+    font-size: 3vw;
+    text-align: justify;
+}
+
+.contents p:first-child {
+    font-size: 2.5vw;
+    line-height: 2;
+}
+
+.contents p em {
+    color: orange;
+    border-bottom: 2px dashed orange;
+    font-style: normal;
+}
+
+.cursor {
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.1);
+    user-select: none;
+    pointer-events: none;
+    transition: background-color .2s, border-color .2s;
+}
+
+.cursor.active {
+    background-color: rgba(255, 165, 0, 0.4);
+    border-color: orange;
+}
+    </style>
+</head>
+<body>
+        <!-- main -->
+        <main>
+            <div class="cursor"></div>
+    
+            <div class="contents">
+                <p>To climb steep hills requires <em>slow</em> pace at first. </p>
+                <p>험준한 산을 오르기 위해선 먼저 <em>천천히</em> 걸어야 한다.</p>
+            </div>
+        </main>
+        <!-- //main -->
+        
+        <!-- info -->
+        <div class="info left">
+            <h1><a href="mouse00.html">Javascript Mouse Effect01</a></h1>
+            <p>마우스 따라다니기</p>
+        </div>
+    
+        <div class="info bottom">
+            <ul>
+                <li>clientX : <span class="clientX">0</span></li>
+                <li>clientY : <span class="clientY">0</span></li>
+                <li>offsetX : <span class="offsetX">0</span></li>
+                <li>offsetY : <span class="offsetY">0</span></li>
+                <li>pageX : <span class="pageX">0</span></li>
+                <li>pageY : <span class="pageY">0</span></li>
+                <li>screenX : <span class="screenX">0</span></li>
+                <li>screenY : <span class="screenY">0</span></li>
+            </ul>
+        </div>
+        <!-- //info -->
+</body>
+<script>
+    /*
+    //Jquery
+    $(window).mousemove(function(e){
+        $(".clientX").text(e.clientX)
+    })
+    */
+    //JS
+    window.addEventListener("mousemove", function(e){
+        //console.log(e)
+        const clientX = document.querySelector('.clientX'); //브라우저 페이지를 기준으로 X좌표의 위치를 반환합니다
+        const clientY = document.querySelector('.clientY'); //브라우저 페이지를 기준으로 y좌표의 위치를 반환합니다
+        const offsetX = document.querySelector('.offsetX'); //선택한 객체를 기준으로 X좌표의 위치를 반환합니다.
+        const offsetY = document.querySelector('.offsetY'); //선택한 객체를 기준으로 y좌표의 위치를 반환합니다.
+        const pageX = document.querySelector('.pageX'); //브라우저 페이지를 기준으로 X좌표의 위치를 반환합니다.
+        const pageY = document.querySelector('.pageY'); //브라우저 페이지를 기준으로 y좌표의 위치를 반환합니다.
+        const screenX = document.querySelector('.screenX'); //모니터 스크린을 기준으로 X좌표의 위치를 반환합니다.
+        const screenY = document.querySelector('.screenY'); //모니터 스크린을 기준으로 y좌표의 위치를 반환합니다.
+        const cursor = document.querySelector('.cursor') // 커서 모양
+        const emActive = document.querySelectorAll('.contents em'); //em테그
+
+
+        clientX.innerHTML = e.clientX;
+        clientY.innerHTML = e.clientY;
+        offsetX.innerHTML = e.offsetX;
+        offsetY.innerHTML = e.offsetY;
+        pageX.innerHTML = e.pageX;
+        pageY.innerHTML = e.pageY;
+        screenX.innerHTML = e.screenX;
+        screenY.innerHTML = e.screenY;
+
+        cursor.style.left = e.clientX - 25 + 'px';
+        cursor.style.top = e.clientY - 25 + 'px';
+        /*
+        emActive.addEventListener("mouseenter", function() {
+            cursor.classList.add("active")
+        });
+
+        emActive.addEventListener("mouseleave", function() {
+            cursor.classcreenYsList.remove("active")
+        });*/
+
+        emActive.forEach(function(em) {
+            em.addEventListener("mouseenter", function() {
+                cursor.classList.add("active")
+            })
+            em.addEventListener("mouseleave", function() {
+                cursor.classList.remove("active")
+            })
+        })
+
+    })
+
+</script>
+</html>

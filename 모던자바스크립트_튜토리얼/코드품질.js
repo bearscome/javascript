@@ -20,5 +20,10 @@
             ㄱ. Local : 함수의 지역변수 Local의 하위항목에 this에 대한 정보도 출력
             ㄴ. Global : 함수 밖에 선언 된 변수
     
-    
+    5. 스크립트 실행이 중단되는 경우
+        a. 중단점을 만났을 때
+        b. debugger문을 만났을 때
+        c. 에러가 발생했을 때  
+
+    구글 공식 개발자 모드 메뉴얼 https://developers.google.com/web/tools/chrome-devtools
 */
