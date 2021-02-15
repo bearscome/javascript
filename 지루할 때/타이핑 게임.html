@@ -65,6 +65,7 @@
             cursor: not-allowed;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <header>
@@ -90,7 +91,7 @@
         const answerScore = document.querySelector('.score')
         const timeCount = document.querySelector('.time')
         const button = document.querySelector('.button')
-        const GAME_TIME_SETTING = 3
+        const GAME_TIME_SETTING = 9
 
         let time = GAME_TIME_SETTING;
         let words = [];
@@ -102,35 +103,47 @@
         init() // 시작
     
         function init() { // 시작 함수
+            chageButton("게임 로딩중...")
             getWord()
-            wordInput.addEventListener('input', checkMatch());
         }
 
         button.addEventListener('click', function() { //게임 실행
-            time = GAME_TIME_SETTING;
-            timeInterval = setInterval(countDown,1000);
+            if(isPlaying) {
+                return
+            }
             isPlaying = true;
-            answerScore.innerHTML = 0;
-            checkInterval = setInterval(checkStatus, 50)
+            time = GAME_TIME_SETTING;
             wordInput.focus()
-            button.innerHTML = "게임중"
+            answerScore.innerHTML = 0;
+            timeInterval = setInterval(countDown,1000);
+            checkInterval = setInterval(checkStatus, 50)
+            chageButton("게임중")
         })
 
-        function checkStatus() {
+        function checkStatus() { //상태 확인
             if(!isPlaying && time === 0) {
-                chageButton("게임종료...")
+                chageButton("게임시작")
                 clearInterval(checkInterval)
             }
         }
 
         function getWord() { // 단어 배열
-            words = ["Hello", "Banana", "Apple", "Cherry"];
-            chageButton("게임시작")
+            axios.get('https://random-word-api.herokuapp.com//word?number=100')
+                .then(function (response) {
+                    response.data.forEach(function(word) {
+                        if(word.length < 10) {
+                            words.push(word)
+                        }
+                    })
+                    chageButton("게임시작")
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
         }
 
 
-        function checkMatch() { //단어 일치 함수
-            //console.log(this.value.toLowerCase() === wordChage.innerHTML.toLowerCase()) toLowerCase() 소문자로 변경
+        wordInput.addEventListener('input', function() {  //단어 일치 함수
             if(wordInput.value.toLowerCase() === wordChage.innerHTML.toLowerCase()) {
                 wordInput.value = ""
                 if(!isPlaying) {
@@ -138,14 +151,14 @@
                 }
                 score++
                 answerScore.innerHTML = score
-
+                time = GAME_TIME_SETTING;
                 const randomIndex = Math.floor(Math.random() * words.length) 
                 wordChage.innerHTML = words[randomIndex]
             }
-        }
+        }) 
         
 
-        function countDown() {
+        function countDown() { //카운트 다운
             time > 0 ? time-- : isPlaying = false;
             timeCount.innerHTML = time;
             if(!isPlaying) {
@@ -153,10 +166,11 @@
             }
         };
 
-        function chageButton(text) {
+        function chageButton(text) { //버튼
             button.innerHTML = text;
             text === "게임시작" ? button.classList.remove("loading") : button.classList.add("loading")
         }
+
     </script>
 </body>
 </html>
