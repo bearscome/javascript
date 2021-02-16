@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin:0
+        }
+        body {
+            width: 100%;
+            height: 100vh;
+            padding-top: 20px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            background-color: beige;
+        }
+        .header {
+            width: 100%;
+            background-color: red;
+            margin-bottom: 3rem;
+        }
+        .main {
+            width: 100%;
+            background-color: blue;
+        }
+        .text-box {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .insert {
+            border: none;
+            margin-right: 1rem;
+            padding: 0.4rem;
+            font-size: 1.6rem;
+            background: white;
+        }
+        .division {
+            color: #c065c0;
+            width: 8rem;
+            cursor: pointer;
+            padding: 0.7rem;
+        }
+        .list-box {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .list {
+            list-style: none;
+            width: 30rem;
+            text-align: left;
+            background-color: red;
+        }
+        .list li {
+            display: flex;
+            justify-content: space-between;
+        }
+        .list li.do {
+            background-color: #fff;
+        }
+        .list li.end {
+            background: #b65337;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>TOdo List</h1>
+    </header>
+    <main class="main">
+        <section class="text-box">
+            <input class="insert" type="text" name="" id="">
+            <select class="division">
+                <option>분류</option>
+            </select>
+        </section>
+        <section class="list-box">
+            <ul class="list">
+                <li class="do">
+                    <p>해야할 것</p>
+                    <div class="func">
+                        <input class="complete" type="button" value="완료"/>
+                        <input class="delete" type="button" value="삭제"/>
+                    </div>
+                </li>
+                <li class="end">
+                    <p>끝난 것</p>
+                    <div class="func">
+                        <input class="complete" type="button" value="완료"/>
+                        <input class="delete" type="button" value="삭제"/>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+</body>
+<script>
+    const todoInsert = document.querySelector('.insert')
+    const todoList = document.querySelector('.list')
+    const todoComplete = document.querySelector('.complete')
+    const todoDelete = document.querySelector('.delete')
+
+    todoInsert.addEventListener('keypress', function(e) {
+        const todoText = this.value
+        if(e.keyCode==13) {
+            todoAdd(todoText)
+            console.log(todoText)
+        }
+    })
+
+    function todoAdd(text) {
+        const addList = document.createElement('li');
+        const addListText = document.createElement('p');
+        const addListbox = document.createElement('div');
+        const addListbutton = document.createElement('input')
+
+        addListText.innerHTML = text;
+        addListbutton.type = "button"
+        addListbutton.value = "완료"
+        addList.appendChild(addListText)
+        addList.appendChild(addListbox)
+        addListbox.appendChild(addListbutton)
+        
+        
+        
+       
+
+
+
+
+        todoList.appendChild(addList)
+    }
+</script>
+</html>
