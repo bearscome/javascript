@@ -105,12 +105,16 @@
 <script>
     const todoInsert = document.querySelector('.insert')
     const todoList = document.querySelector('.list')
-    const todoComplete = document.querySelector('.complete')
-    const todoDelete = document.querySelector('.delete')
+    const todoComplete = document.querySelectorAll('.complete')
+    const todoDelete = document.querySelectorAll('.delete')
 
     todoInsert.addEventListener('keypress', function(e) {
         const todoText = this.value
         if(e.keyCode==13) {
+            if(todoInsert.value =='') {
+                alert("내용을 입력해 주세요")
+                return
+            }
             todoAdd(todoText)
             console.log(todoText)
         }
@@ -120,23 +124,35 @@
         const addList = document.createElement('li');
         const addListText = document.createElement('p');
         const addListbox = document.createElement('div');
-        const addListbutton = document.createElement('input')
+        const buttonComplete = document.createElement('input')
+        const buttonDelete = document.createElement('input')
+
 
         addListText.innerHTML = text;
-        addListbutton.type = "button"
-        addListbutton.value = "완료"
+        addListbox.classList.add('func')
+        buttonComplete.type = "button"
+        buttonComplete.value = "완료"
+        buttonComplete.classList.add('complete')
+        buttonDelete.type = 'button'
+        buttonDelete.value = '삭제'
+        buttonDelete.classList.add('delete')
+
         addList.appendChild(addListText)
         addList.appendChild(addListbox)
-        addListbox.appendChild(addListbutton)
-        
-        
-        
-       
-
-
-
+        addListbox.appendChild(buttonComplete)
+        addListbox.appendChild(buttonDelete)
 
         todoList.appendChild(addList)
+    }
+
+    
+    for(let button of todoDelete){
+        button.addEventListener('click', function(e) { 
+            const parentList = this.parentNode.parentNode;
+            delete parentList
+            console.log(parentList)
+            console.log('a')
+        })
     }
 </script>
 </html>
