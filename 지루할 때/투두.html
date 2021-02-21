@@ -47,66 +47,54 @@
             cursor: pointer;
             padding: 0.7rem;
         }
-        .list-box {
+        .list-wrap {
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        .list {
+        .list-box {
             list-style: none;
             width: 30rem;
             text-align: left;
-            background-color: red;
         }
-        .list li {
+        .list {
             display: flex;
             justify-content: space-between;
+            background-color: white;
         }
-        .list li.do {
-            background-color: #fff;
-        }
-        .list li.end {
-            background: #b65337;
+        .completeList {
+           background-color : powderblue;
+           text-Decoration : line-through
         }
     </style>
 </head>
 <body>
     <header class="header">
-        <h1>TOdo List</h1>
+        <h1>ToDo List</h1>
     </header>
     <main class="main">
         <section class="text-box">
             <input class="insert" type="text" name="" id="">
-            <select class="division">
-                <option>분류</option>
-            </select>
         </section>
-        <section class="list-box">
-            <ul class="list">
-                <li class="do">
-                    <p>해야할 것</p>
-                    <div class="func">
-                        <input class="complete" type="button" value="완료"/>
-                        <input class="delete" type="button" value="삭제"/>
-                    </div>
-                </li>
-                <li class="end">
-                    <p>끝난 것</p>
-                    <div class="func">
-                        <input class="complete" type="button" value="완료"/>
-                        <input class="delete" type="button" value="삭제"/>
-                    </div>
-                </li>
+        <section class="list-wrap">
+            <ul class="list-box">
+
             </ul>
         </section>
     </main>
 </body>
 <script>
+    'use strict';
     const todoInsert = document.querySelector('.insert')
+    const todoList_box = document.querySelector('.list-box')
     const todoList = document.querySelector('.list')
-    const todoComplete = document.querySelectorAll('.complete')
+    const todoLi = document.querySelectorAll('li')
+    const todoComplete = document.querySelector('.complete')
+    const todoCompletes = document.querySelectorAll('.complete')
     const todoDelete = document.querySelectorAll('.delete')
+    let liIdx = 1;
+
 
     todoInsert.addEventListener('keypress', function(e) {
         const todoText = this.value
@@ -116,11 +104,31 @@
                 return
             }
             todoAdd(todoText)
+            todoInsert.value = ""
             console.log(todoText)
         }
     })
 
+  
     function todoAdd(text) {
+
+        // ex3) 세가지 방법 중 가장 나은 방법
+        let listLi = document.createElement('li')
+        let liText = '<p>'+text+'</p><div class="func"><button class="complete" onclick="completeList('+liIdx+')">완료</button><button class="delete"onclick="deleteList('+liIdx+')">삭제</button></div>'
+        listLi.classList.add('list')
+        //listLi.classList.add('')
+        listLi.setAttribute('id', 'li'+ liIdx)
+        listLi.innerHTML = liText;
+        liIdx++
+        todoList_box.appendChild(listLi)
+        console.log(liIdx, listLi)
+
+        /* ex2) 증감 연산자라서 코드가 무거워 짐
+        todoList.innerHTML += '<li><p>'+text+'</p><div class="func"><input class="complete" type="button" value="완료"/><input class="delete" type="button" value="삭제"/></li>'
+        */
+
+        /*
+        ex1) 
         const addList = document.createElement('li');
         const addListText = document.createElement('p');
         const addListbox = document.createElement('div');
@@ -143,16 +151,37 @@
         addListbox.appendChild(buttonDelete)
 
         todoList.appendChild(addList)
+
+        // 삭제
+
+        removeLi()
+
+        function removeLi() {
+            for(let i = 0; i < todoLi.length; i++) {
+                todoDelete[i].addEventListener('click', function() {
+                    const listME = todoDelete[i].parentNode.parentNode
+                    listME.remove()
+                    console.log('동작',[i],this)
+                    console.log(todoDelete[i].closest)
+                })
+                console.log(todoLi.length)
+            }
+        }
+        */
     }
 
+
+
+    function completeList(liIdx) {
+        let liCounts  = document.getElementById('li' + liIdx)
+        let liText = liCounts.querySelector('.complete')
+        liCounts.classList.add('completeList')
+    }
     
-    for(let button of todoDelete){
-        button.addEventListener('click', function(e) { 
-            const parentList = this.parentNode.parentNode;
-            delete parentList
-            console.log(parentList)
-            console.log('a')
-        })
+    function deleteList(liIdx) {
+        let Licounts  = document.getElementById('li' + liIdx)
+        console.log(Licounts, liIdx)
+        todoList_box.removeChild(Licounts)
     }
 </script>
 </html>
