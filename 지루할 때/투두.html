@@ -109,20 +109,21 @@
         }
     })
 
+
   
     function todoAdd(text) {
 
         // ex3) 세가지 방법 중 가장 나은 방법
         let listLi = document.createElement('li')
-        let liText = '<p>'+text+'</p><div class="func"><button class="complete" onclick="completeList('+liIdx+')">완료</button><button class="delete"onclick="deleteList('+liIdx+')">삭제</button></div>'
+        let liText = '<p>'+text+'</p><div class="func"><button class="complete" onclick="completeList('+liIdx+')">완료</button><button class="delete">삭제</button></div>'
         listLi.classList.add('list')
-        //listLi.classList.add('')
         listLi.setAttribute('id', 'li'+ liIdx)
         listLi.innerHTML = liText;
         liIdx++
         todoList_box.appendChild(listLi)
-        console.log(liIdx, listLi)
+        //console.log(liIdx, listLi)
 
+        deleteLI(listLi, liIdx)
         /* ex2) 증감 연산자라서 코드가 무거워 짐
         todoList.innerHTML += '<li><p>'+text+'</p><div class="func"><input class="complete" type="button" value="완료"/><input class="delete" type="button" value="삭제"/></li>'
         */
@@ -170,18 +171,39 @@
         */
     }
 
-
-
     function completeList(liIdx) {
         let liCounts  = document.getElementById('li' + liIdx)
         let liText = liCounts.querySelector('.complete')
         liCounts.classList.add('completeList')
+        console.log(liCounts)
     }
     
+    /*
     function deleteList(liIdx) {
         let Licounts  = document.getElementById('li' + liIdx)
         console.log(Licounts, liIdx)
         todoList_box.removeChild(Licounts)
+    }*/
+
+    function deleteLI(liId, liIdx) {
+        const listId = liId
+        const listIdx = liIdx
+        const listDelete = liId.querySelector('.delete')
+        
+        listDelete.addEventListener('click', function() {
+            todoList_box.removeChild(listId)
+        })
+        console.log(listId, listIdx, listDelete)
+        // todoAdd에 있는 인덱스하고 LiId값 추가한거 있는데 왜 굳이 어렵게 빙빙돌았을까... 이렇게 간단한건데.. 결국 원하는데로 이벤트리스너로 처리함
     }
+
+    /*
+    const todoDelete = document.querySelectorAll('.delete')
+    todoDelete.forEach(function(button, index) {
+        button.addEventListener('click',function() {
+            deleteList(index)
+        })
+    })
+    */
 </script>
 </html>
