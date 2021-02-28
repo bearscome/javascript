@@ -25,8 +25,8 @@
             8. \uXXXX	UTF-16 인코딩 규칙을 사용하는 16진수 코드 XXXX로 표현한 유니코드 기호입니다. XXXX는 반드시 네 개의 16진수로 구성되어야 합니다(예시: \u00A9는 저작권 기호 ©의 유니코드임).
             9. \u{X…XXXXXX}(한 개에서 여섯 개 사이의 16진수 글자)	UTF-32로 표현한 유니코드 기호입니다. 몇몇 특수한 글자는 두 개의 유니코드 기호를 사용해 인코딩되므로 4바이트를 차지합니다. 이 방법을 사용하면 긴 코드를 삽입할 수 있습니다.
 
-        - 줄 바꿈 문자는 |n을 사용하면 작은 따옴표, 큰 따옴표도 여러줄의 문자열 가능
-            - let guestList = "손님 : |n * John|n * Pete|n"
+        - 줄 바꿈 문자는 \n을 사용하면 작은 따옴표, 큰 따옴표도 여러줄의 문자열 가능
+            - let guestList = "손님 : \n * John\n * Pete\n"
             - 빽틱과 같음 다른 점이 없다.
 
         - 유니 코드
@@ -34,7 +34,7 @@
             - console.log( "\u{20331}" ); // 佫, 중국어(긴 유니코드)
             - console.log( "\u{1F60D}" ); // 😍, 웃는 얼굴 기호(긴 유니코드)
 
-            - 모든 특수 문자는 '이스케이프 문자'라고 불리며 역슬래시|로 시작한다.
+            - 모든 특수 문자는 '이스케이프 문자'라고 불리며 역슬래시\로 시작한다.
                 - console.log( 'I\'m the Walrus!' ); // I'm the Walrus! : 문자열 내의 따옴표는 |를 꼭 붙혀줘야 한다.
                 - console.log( `I'm the Walrus!` ); // I'm the Walrus! : 백틱을 쓰면 좀더 간단하다.
             - 역 슬래시를 보여줘야 한다면
@@ -80,7 +80,7 @@
         
         let str = "Widget with id";
         console.log(str.indexOf('Widget')) // 0, str은 'Widget'부터 시작함
-        console.log(str.indexOf('widget')) // -1, indexOf는 대,소문자를 따진다
+        console.log(str.indexOf('widget')) // -1, indexOf는 대, 소문자를 따진다
         console.log(str.indexOf('id')) // 1, "id"는 첫 번째 위치에서 발견 됨(Widget에 있는 W + id + get)
         console.log(str.indexOf('id',2)) // 첫 번째 아이디 말고 두번 째 아이디 찾는 것
 
@@ -109,7 +109,7 @@
         let str = "Widget with id";
 
         if (str.indexOf("Widget")) {
-            console.log("찾았다!"); // 의도한 대로 동작한다.
+            console.log("찾았다!"); // 의도한 대로 동작 안한다.
         }
 
         str.indexOf("Widget")은 0을 반환하는데 if문에선 0은 false로 간주함으로 console.log()가 작동하지 않는다.
