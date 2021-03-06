@@ -21,7 +21,7 @@
 
             console.log( arr ); // 1,2,3,4,5
 
-    2. slice
+    2. slice : 원하는 요소 복사
         - arr.slice는 arr.splice와 유사해 보이지만 훨씬 간단
         - 문법 : arr.slice([start], [end])
             인덱스부터 ("end"를 제외한) "end"인덱스까지의 요소를 복사한 새로운 배열을 반환
@@ -32,7 +32,7 @@
             arr.slice()는 인수를 하나도 넘기지 않고 호출하여 arr의 복사본을 만들 수 있습니다. 
             이런 방식은 기존의 배열을 건드리지 않으면서 배열을 조작해 새로운 배열을 만들고자 할 때 자주 사용됩니다.
 
-    3. concat
+    3. concat : 기존 배열에 추가 요소 넣기
         - 기존 배열의 요소를 사용해 새로운 배열을 만들거나 기존 배열에 요소를 추가하고자 할 때
         - 문법 : arr.concat(arg1, arg2...)
         - 인수엔 배열이나 값이 올 수 있는데, 인수 개수엔 제한이 없습니다
@@ -69,7 +69,7 @@
 
 /*
     배열 탐색
-    indexOf, lastIndexOf, includes
+    indexOf, lastIndexOf, includes : 해당 인덱스 반환
         1. arr.indexOf(item, from) : from부터 item을 찾음, 요소를 발견하면 해당 요소 인덱스 반환하고 발견 못하면 -1 반환
         2. arr.lastIndexOf(item, from) : indexOf와 같은 하지만 끝에서 부터 시작
         3. arr.includes(item, from) : 인덱스from부터 시작해 item이 있는지 검색. 해당 요소를 발견하면 true 반환
@@ -84,7 +84,7 @@
         - 요소의 위치가 아니라 존재여부만 알고 싶은면 includes를 사용
 
 
-    find, findIndex
+    find, findIndex : 객체를 찾는거
         - 객체로 이루어진 배열이 있다고 가정해 봅시다. 특정 조건에 부합하는 객체를 배열 내에서 어떻게 찾을 수 있을까요?
         - 문법 : let result = arr.find(function(item, index, array) {
                     //true가 반환되면 반복을 멈추고 해당요소를 반환
@@ -112,7 +112,7 @@
                 arr.findIndex는 find와 동일한 일을 하나, 조건에 맞는 요소를 반환하는 대신 해당 요소의 인덱스를 반환한다는 점이 다릅니다. 
                 조건에 맞는 요소가 없으면 -1이 반환됩니다.
 
-    filter
+    filter : 객체를 필터링 하는거
         - find 메서드는 함수의 반환 값을 true로 만드는 단 하나의 요소를 찾습니다.
         - 조건을 충족하는 요소가 여러 개라면 arr.filter(fn)를 사용하면 됩니다.
         - filter는 find와 문법이 유사하지만, 조건에 맞는 요소 전체를 담은 배열을 반환한다는 점에서 차이가 있습니다.
@@ -245,13 +245,156 @@
         arr.copyWithin(target, start, end)은 start부터 end까지 요소를 복사하고, 복사한 요소를 target에 붙여넣습니다. 기존 요소가 있다면 덮어씁니다.
 */
 
-function camelize(str) {
-    console.log( str
+/** 연습문제
+function change(text) {// border-left-width를 borderLeftWidth로 변경하기
+    return(text
         .split('-')
-        .map(function(item, index) {
-            index == 0 ? item : item[0].toUpperCase() + item.slice(1)
+        .map(function(word, index) {
+            return index == 0 ? word : word[0].toUpperCase() + word.slice(1) 
         })
-        .join(''))
+        .join('')
+    )
+}
+console.log(change('list-style-image'))
+
+
+function filterRange(arr, a, b) { //특정 범위에 속하는 요소 찾기
+    return arr.filter(function(item) {
+        return a <= item && item <= b 
+    });
+}
+let arr = [5,3,8,1]
+let test = filterRange(arr, 1, 4)
+console.log(test)
+
+
+let arr = [5, 3, 8, 1];
+
+filterRangeInPlace(arr, 1, 4); // 1과 4 사이에 있지 않은 요소는 모두 제거함
+
+console.log( arr ); // [3, 1]
+
+function filterRangeInPlace(arr, a, b ) {
+    for(let i = 0; i < arr.length; i++) {
+        let val = arr[i]
+
+        if(val < a || val > b) {
+            arr.splice(i, 1);
+            i--
+        }
+    }
+} 
+
+function filterRangeInPlace(arr, a, b) {
+    arr.forEach(function(items, index) {
+        if(items <= b || items >= a ) {
+           arr.splice(index,1)
+        }
+    })
 }
 
-camelize("-webkit-transition") == 'WebkitTransition';
+let arr = [5, 2, 1, -10, 8];
+
+// 요소를 내림차순으로 정렬해주는 코드를 여기에 작성해보세요.
+arr.sort(function(a,b) {
+    return b-a
+})
+
+console.log( arr ); // 8, 5, 2, 1, -10
+
+
+
+
+let calc = new Calculator;
+alert( calc.calculate("3 + 7") ); // 10
+
+let powerCalc = new Calculator;
+powerCalc.addMethod("*", (a, b) => a * b);
+powerCalc.addMethod("/", (a, b) => a / b);
+powerCalc.addMethod("**", (a, b) => a ** b);
+
+let result = powerCalc.calculate("2 ** 3");
+alert( result ); // 8
+
+function Calculator() {
+
+  this.methods = {
+    "-": (a, b) => a - b,
+    "+": (a, b) => a + b
+  };
+
+  this.calculate = function(str) {
+
+    let split = str.split(' '),
+      a = +split[0],
+      op = split[1],
+      b = +split[2];
+
+    if (!this.methods[op] || isNaN(a) || isNaN(b)) {
+      return NaN;
+    }
+
+    return this.methods[op](a, b);
+  };
+
+  this.addMethod = function(name, func) {
+    this.methods[name] = func;
+  };
+}
+
+
+let john = { name: "John", age: 25 };
+let pete = { name: "Pete", age: 30 };
+let mary = { name: "Mary", age: 28 };
+
+let users = [ john, pete, mary ];
+
+let names = users.map(function(items) {
+    return items.name
+})
+
+console.log( names ); // John, Pete, Mar
+
+
+
+
+let john = { name: "John", surname: "Smith", id: 1 };
+let pete = { name: "Pete", surname: "Hunt", id: 2 };
+let mary = { name: "Mary", surname: "Key", id: 3 };
+
+let users = [ john, pete, mary ];
+
+let usersMapped = users.map(function(items, index) {
+    let fullName = items.name + items.surname
+    let userNameID = {
+        fullName : fullName,
+        id : items.id
+    }
+    return userNameID
+})
+
+let usersMapped = users.map(user => ({
+    fullName: `${user.name} ${user.surname}`,
+    id: user.id
+  }));
+
+
+usersMapped = [
+  { fullName: "John Smith", id: 1 },
+  { fullName: "Pete Hunt", id: 2 },
+  { fullName: "Mary Key", id: 3 }
+]
+
+
+console.log( usersMapped[0].id ) // 1
+console.log( usersMapped[0].fullName)
+ */
+
+
+
+
+
+
+
+
+
