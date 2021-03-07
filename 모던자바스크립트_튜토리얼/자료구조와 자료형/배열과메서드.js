@@ -388,7 +388,112 @@ usersMapped = [
 
 console.log( usersMapped[0].id ) // 1
 console.log( usersMapped[0].fullName)
- */
+
+
+배열 요소 무작위로 섞기
+let arr = [1, 2, 3]
+function shuffle(arr) {
+    arr.sort(function() {
+        return Math.random() - 0.5
+    })
+}
+shuffle(arr);
+console.log(arr);
+
+function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+  }
+  // 1, 2, 3으로 만들 수 있는 모든 순열의 빈도를 세줍니다.
+  let count = {
+    '123': 0,
+    '132': 0,
+    '213': 0,
+    '231': 0,
+    '321': 0,
+    '312': 0
+  };
+  for (let i = 0; i < 1000000; i++) {
+    let array = [1, 2, 3];
+    shuffle(array);
+    count[array.join('')]++;
+  }
+  // 만들 수 있는 모든 순열의 생성 빈도를 세서 출력해줍니다.
+  for (let key in count) {
+    console.log(`${key}: ${count[key]}`);
+  }
+    자바스크립트는 균일하게 분배하는게 아닌 한 쪽으로 쏠릴 수 있다.
+    sort를 실행했을 때 내부 동작이 블랙박스 안에 담겨있기 때문입니다
+    sort를 실행하면 인수로 넘긴 정렬 함수가 배열을 정리해주는데 이 과정에서 배열 요소끼리의 비교가 완전 무작위로 이뤄지기 때문에 블랙박스 안에 무엇이 담겨있을지는 더 예측하기 어려워집니다
+    자바스크립트 엔진마다 내부 구현방식이 다르므로 이런 혼돈은 더 커지죠
+    
+
+      //  피셔-예이츠 셔플 //랜덤한 수를 균일하게 분배하기 위한 알고리즘
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          let j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      }
+      // 1, 2, 3으로 만들 수 있는 모든 순열의 빈도를 세줍니다.
+      let count = {
+        '123': 0,
+        '132': 0,
+        '213': 0,
+        '231': 0,
+        '321': 0,
+        '312': 0
+      };
+      for (let i = 0; i < 1000000; i++) {
+        let array = [1, 2, 3];
+        shuffle(array);
+        count[array.join('')]++;
+      }
+      // 만들 수 있는 모든 순열의 생성 빈도를 세서 출력해줍니다.
+      for (let key in count) {
+        console.log(`${key}: ${count[key]}`);
+      }
+
+
+
+
+
+         나이 평균 구하기
+
+      let john = { name: "John", age: 25 };
+      let pete = { name: "Pete", age: 30 };
+      let mary = { name: "Mary", age: 29 };
+      
+      let arr = [ john, pete, mary ];
+
+    
+
+      function getAverageAge(users) {
+          return users.reduce(function(prev, user) {
+            return prev + user.age
+          }, 0) /users.length
+      }
+
+      console.log(getAverageAge(arr))
+
+            //100번비교.. 하니까 성능상안좋음
+      function unique(arr) {
+        let array = []
+
+        for(let str of arr) {
+            if (!array.includes(str)) {
+                array.push(str)
+            }
+        }
+
+        return array
+      }
+      
+      let strings = ["Hare", "Krishna", "Hare", "Krishna",
+        "Krishna", "Krishna", "Hare", "Hare", ":-O"
+      ];
+      
+      console.log( unique(strings) ); // Hare, Krishna, :-O
+  */
 
 
 
@@ -397,4 +502,4 @@ console.log( usersMapped[0].fullName)
 
 
 
-
+   
