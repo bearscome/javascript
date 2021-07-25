@@ -9,7 +9,7 @@ let sss:number = numAdd(1,2);
 
 console.log(`hello ${sss}`);
 
-function stringAdd(a:string, b:string) {
+function stringAdd(a:string, b:string):string {
     return a + b;
 };
 
@@ -311,6 +311,67 @@ interface aaa<T extends U > {
     name:string,
     age:T
 }
+/**
+ * 조건부 타입
+ * 제약 조건과 다르게 '타입구현' 영역에서 사용하는 exteds는 삼항 연산자를 사용할 수 있다.
+ * T extends U ? X: Y
+ */
+// type U = string | number | boolean; 위랑 중복
+
+type MyType4<T> = T extends U ? string : never;
+// type4는 T에 스트링 넘버, 불린형이 넘어오면 string 이고 아니면 나머지는 안됌
+
+interface IUser<T> {
+    name:string,
+    age : T extends U ? number : string
+}
+
+interface bbb<T extends boolean> {
+    name:string,
+    age : T extends true ? string : number
+    // age에서 true이면 스트링, 아니면 number타입 써야함
+    isString: T
+};
+
+const str1: bbb <true> = {
+    name:'bb',
+    age:'13',
+    isString:true
+}
 
 
+
+/**
+ * infer : 키워드를 사용해 타입 변수의 타입 추론 여부를 확인 할 수 있다.
+ * T extends infer U ? X : Y
+ * U가 추론 가능한 타입이면 참 아니면 거짓
+ */
+
+
+ type MyType34<T> = T extends infer R ? R : null;
+
+ const a34: MyType34<number> = 123;
+
+ //타입 변수 'R'은 MyType34<number>에서 받은 타입 number가 되고 infer 키워드를 통해 타입 추론이 가능한지 확인 한다.
+ //number 타입은 다연히 타입 추론이 가능하니 R을 반환 (만약 R을 타입 추론할 수 없다면 null 반환)
+
+
+ type ReturnType12<T extends (...args: any) => any> = T extends (...args: any) => infer R ? R : any;
+
+function fn(num: number) {
+  return num.toString();
+}
+
+const a12: ReturnType<typeof fn> = 'Hello';
+console.log(`흠 ${a12} ${typeof(a12)}`);
+
+//위 예제에서 typeof fn은 (num: number) => string으로 반환 타입은 string입니다.
+//따라서 R은 string이고 역시 infer 키워드를 통해서 타입 추론이 가능하기 때문에 R을 반환합니다.
+//즉, string을 반환합니다.
+
+//infer 키워드는 제약 조건 extends가 아닌 조건부 타입 extends 절에서만 사용 가능
+//infer 키워드는 같은 타입 변수를 여러 위치에서 사용 가능
+//일반적인 공변성(co-variant) 위치에선 유니언 타입으로 추론
+//함수 인수인 반공변성(contra-variant) 위치에선 인터섹션 타입으로 추론
+//여러 호출 시그니처(함수 오버로드)의 경우 마지막 시그니처에서 추론
 //https://heropy.blog/2020/01/27/typescript/ 조건부타입

@@ -207,5 +207,25 @@ const dataBB = {
     name: 'aaa',
     value: '111'
 };
+;
+const str1 = {
+    name: 'bb',
+    age: '13',
+    isString: true
+};
+const a34 = 123;
+function fn(num) {
+    return num.toString();
+}
+const a12 = 'Hello';
+console.log(`흠 ${a12} ${typeof (a12)}`);
+//위 예제에서 typeof fn은 (num: number) => string으로 반환 타입은 string입니다.
+//따라서 R은 string이고 역시 infer 키워드를 통해서 타입 추론이 가능하기 때문에 R을 반환합니다.
+//즉, string을 반환합니다.
+//infer 키워드는 제약 조건 extends가 아닌 조건부 타입 extends 절에서만 사용 가능
+//infer 키워드는 같은 타입 변수를 여러 위치에서 사용 가능
+//일반적인 공변성(co-variant) 위치에선 유니언 타입으로 추론
+//함수 인수인 반공변성(contra-variant) 위치에선 인터섹션 타입으로 추론
+//여러 호출 시그니처(함수 오버로드)의 경우 마지막 시그니처에서 추론
 //https://heropy.blog/2020/01/27/typescript/ 조건부타입
 //# sourceMappingURL=index.js.map
