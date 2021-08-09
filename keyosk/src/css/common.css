@@ -1,0 +1,79 @@
+* {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+}
+
+.wrap {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-color: beige;
+  padding: 3vw;
+}
+
+.main_wrap {
+  background-color: powderblue;
+  width: 70%;
+}
+
+.main_wrap .header {
+  padding-top: 1vw;
+}
+
+.main_wrap .header .logo {
+  text-align: left;
+}
+
+.main_wrap .header .nav {
+  display: none;
+}
+
+.main_wrap .main {
+  margin-top: 1vw;
+}
+
+.main_wrap .main .title {
+  text-align: left;
+}
+
+.main_wrap .main .menu_list, .main_wrap .main .item_list {
+  margin-right: 1vw;
+  border: 1px solid black;
+  flex: 1 1 40%;
+}
+
+.main_wrap .main .menu_wrap, .main_wrap .main .item_wrap {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.main_wrap .main .menu_section {
+  margin-top: 1vw;
+}
+
+.main_wrap .main .item_section {
+  margin-top: 1vw;
+}
+
+.aside_wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: azure;
+  width: 30%;
+}
+
+.aside_wrap .myorder_footer {
+  position: absolute;
+  right: 50%;
+  left: 50%;
+  margin-right: -25%;
+  margin-left: -25%;
+  bottom: 1vw;
+}
+/*# sourceMappingURL=common.css.map */
