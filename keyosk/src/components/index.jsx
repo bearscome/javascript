@@ -1,5 +1,4 @@
 import Aside from './Aside';
-import Menu from './Menu';
-import Itmes from './Itmes';
+import Popup from './Popup';
 
-export { Aside, Menu, Itmes }
+export { Aside, Popup }
