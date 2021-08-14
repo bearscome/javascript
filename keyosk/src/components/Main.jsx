@@ -4,9 +4,11 @@ import { Aside, Popup } from './index'
 
 const Init = ({data}) => {
     const [listIdx, setListIdx] = React.useState(0)
-    const [itemInfo, setItemsInfo] = React.useState(null);
+    const [itemList, setItemsInfo] = React.useState([]);
+    const [clicked, setClicked] = React.useState(false);
 
     const menu = data.data.menu;
+    const chageItemListData = data.data.chaneItem;
     let menuName = data.data.menu[listIdx].name;
     let menuList = data.data.menu[listIdx].childs;
 
@@ -15,12 +17,12 @@ const Init = ({data}) => {
     }
 
     const itemOnclick = (idx) => {
-        setItemsInfo(menuList[idx]);
+        
+        console.log('클릭을 했을 경우', menuList[idx])
+        setClicked(true);
+        setItemsInfo([...itemList, {id:menuList[idx].id, name:menuList[idx].name, price:menuList[idx].Price, URL:menuList[idx].URL}]);
     }
     
-    menuName = data.data.menu[listIdx].name;
-    menuList = data.data.menu[listIdx].childs;
-
     const returnEl = menu.map((el, idx) => {
         return (
             <li className = "menu_list" key = {el.id} onClick = {() => {menuOnClick(idx)}}>
@@ -41,12 +43,11 @@ const Init = ({data}) => {
         )
     })
 
-
     // console.log('menu',menu)
     // console.log('menuList',menuList)
     return (
         <React.Fragment>
-            <div className="wrap">
+            <div className="wrap" className = {clicked ? 'background-block, wrap' : ''}>
                 <div className="container">
                     <section className="main_wrap">
                         <header className="header">
@@ -75,10 +76,14 @@ const Init = ({data}) => {
                         </main>
                     </section>
                     <aside className="aside_wrap">
-                        <Aside itmeInfo = {itemInfo}/>
+                        <Aside itemList = {itemList}/>
                     </aside>
                 </div>
-                <Popup/>
+                <Popup 
+                    selectedItem = {itemList} 
+                    clicked={clicked}
+                    chageItemListData = {chageItemListData}
+                />
             </div>
         </React.Fragment>
     )

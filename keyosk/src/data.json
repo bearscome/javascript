@@ -11,43 +11,43 @@
                         "id":0,
                         "name": "창녕 갈릭 버거 세트",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1627975795315.png",
-                        "Price":"9900"
+                        "Price":"9,900"
                     },
                     {
                         "id":1,
                         "name": "슈슈 버거 라지 세트",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1621834980056.png",
-                        "Price":"9300"
+                        "Price":"9,300"
                     },
                     {
                         "id":2,
                         "name": "맥올데이 빅맥® 세트",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1614163214488.png",
-                        "Price":"9500"
+                        "Price":"9,500"
                     },
                     {
                         "id":3,
                         "name": "맥스파이시 세트® 상하이 버거 세트",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1614163251951.png",
-                        "Price":"9100"
+                        "Price":"9,100"
                     },
                     {
                         "id":4,
                         "name": "1955 버거™ 세트",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1599120019760.png",
-                        "Price":"7600"
+                        "Price":"7,600"
                     },
                     {
                         "id":5,
                         "name": "더블 필레오피쉬 세트",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1617176422465.png",
-                        "Price":"8800"
+                        "Price":"8,800"
                     },
                     {
                         "id":6,
                         "name": "필레오피쉬 세트",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1617176162541.png",
-                        "Price":"9450"
+                        "Price":"9,450"
                     },
                     {
                         "id":7,
@@ -103,85 +103,85 @@
                         "id":0,
                         "name": "창녕 갈릭 버거",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1627975701583.png",
-                        "Price": "6700"
+                        "Price": "6,700"
                     },
                     {
                         "id":1,
                         "name": "트리플 치즈버거",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1621834836862.png",
-                        "Price":"6780"
+                        "Price":"6,780"
                     },
                     {
                         "id":2,
                         "name": "빅맥®",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1583727841393.png",
-                        "Price":"5700"
+                        "Price":"5,700"
                     },
                     {
                         "id":3,
                         "name": "맥스파이시® 상하이 버거",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1583728339451.png",
-                        "Price":"6600"
+                        "Price":"6,600"
                     },
                     {
                         "id":4,
                         "name": "1955 버거™",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1599119588089.png",
-                        "Price":"8800"
+                        "Price":"8,800"
                     },
                     {
                         "id":5,
                         "name": "더블 필레오피쉬",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1617176321703.png",
-                        "Price":"2200"
+                        "Price":"2,200"
                     },
                     {
                         "id":6,
                         "name": "필레오피쉬",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1617176016523.png",
-                        "Price":"1100"
+                        "Price":"1,100"
                     },
                     {
                         "id":7,
                         "name": "슈나 버거 라지",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1617176016523.png",
-                        "Price":"9900"
+                        "Price":"9,900"
                     },
                     {
                         "id":8,
                         "name": "슈다 버거",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1617176016523.png",
-                        "Price":"9900"
+                        "Price":"9,900"
                     },
                     {
                         "id":9,
                         "name": "슈다 버거 라지",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1617176016523.png",
-                        "Price":"9900"
+                        "Price":"9,900"
                     },
                     {
                         "id":10,
                         "name": "슈라 버거",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1617176016523.png",
-                        "Price":"9900"
+                        "Price":"9,900"
                     },
                     {
                         "id":11,
                         "name": "슈라 버거 라지",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1617176016523.png",
-                        "Price":"9900"
+                        "Price":"9,900"
                     },
                     {
                         "id":12,
                         "name": "슈마 버거",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1617176016523.png",
-                        "Price":"9900"
+                        "Price":"9,900"
                     },
                     {
                         "id":13,
                         "name": "슈바 버거",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1617176016523.png",
-                        "Price":"9900"
+                        "Price":"9,900"
                     }
                 ]
             },
@@ -195,43 +195,43 @@
                         "id":0,
                         "name": "맥윙™1인팩",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1624932066240.png",
-                        "Price": "4700"
+                        "Price": "4,700"
                     },
                     {
                         "id":1,
                         "name": "맥윙™2인팩",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1624931886257.png",
-                        "Price": "6700"
+                        "Price": "6,700"
                     },
                     {
                         "id":2,
                         "name": "웨지 후라이",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1620611021623.png",
-                        "Price": "2700"
+                        "Price": "2,700"
                     },
                     {
                         "id":3,
                         "name": "맥윙™콤보",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1619158576990.png",
-                        "Price": "3700"
+                        "Price": "3,700"
                     },
                     {
                         "id":4,
                         "name": "맥윙™",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1619153224507.png",
-                        "Price": "2700"
+                        "Price": "2,700"
                     },
                     {
                         "id":5,
                         "name": "맥스파이시® 상하이 치킨 스낵랩",
                         "URL": "https://www.mcdonalds.co.kr/uploadFolder/product/prol_201902080435011620.png",
-                        "Price": "5700"
+                        "Price": "5,700"
                     },
                     {
                         "id":6,
                         "name": "골든 모짜렐라 치즈스틱 2조각",
                         "URL": "https://www.mcdonalds.co.kr/uploadFolder/product/prol_201902080435496530.png",
-                        "Price": "4700"
+                        "Price": "4,700"
                     }
                 ]
             },
@@ -245,61 +245,61 @@
                         "id":0,
                         "name": "제주 한라봉 칠러",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1617175252202.png",
-                        "Price": "1700"
+                        "Price": "1,700"
                     },
                     {
                         "id":1,
                         "name": "애플망고 칠러",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1617175733654.png",
-                        "Price": "2700"
+                        "Price": "2,700"
                     },
                     {
                         "id":2,
                         "name": "new 배 칠러",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1610884916530.png",
-                        "Price": "2700"
+                        "Price": "2,700"
                     },
                     {
                         "id":3,
                         "name": "디카페인 카페라떼",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1610885883365.png",
-                        "Price": "2700"
+                        "Price": "2,700"
                     },
                     {
                         "id":4,
                         "name": "아이스 카페라떼",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1610885438226.png",
-                        "Price": "1700"
+                        "Price": "1,700"
                     },
                     {
                         "id":5,
                         "name": "디카페인 아이스 카페라떼",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1610887213766.png",
-                        "Price": "1900"
+                        "Price": "1,900"
                     },
                     {
                         "id":6,
                         "name": "아메리카노",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1610886516174.png",
-                        "Price": "1000"
+                        "Price": "1,000"
                     },
                     {
                         "id":7,
                         "name": "디카페인 아메리카노",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1610886871316.png",
-                        "Price": "1200"
+                        "Price": "1,200"
                     },
                     {
                         "id":8,
                         "name": "아이스 아메리카노",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1610887612850.png",
-                        "Price": "1200"
+                        "Price": "1,200"
                     },
                     {
                         "id":9,
                         "name": "디카페인 아이스 아메리카노",
                         "URL": "https://www.mcdonalds.co.kr/upload/product/pcList/1610889471102.png",
-                        "Price": "1500"
+                        "Price": "1,500"
                     }
                 ]
             },
@@ -313,45 +313,82 @@
                         "id":0,
                         "name": "에그 맥머핀®",
                         "URL": "https://www.mcdonalds.co.kr/uploadFolder/product/prol_201901290308474630.png",
-                        "Price": "1700"
+                        "Price": "1,700"
                     },
                     {
                         "id":1,
                         "name": "베이컨 에그 맥머핀®",
                         "URL": "https://www.mcdonalds.co.kr/uploadFolder/product/prol_201901290308474630.png",
-                        "Price": "2700"
+                        "Price": "2,700"
                     },
                     {
                         "id":2,
                         "name": "소시지 에그 맥머핀®",
                         "URL": "https://www.mcdonalds.co.kr/uploadFolder/product/prol_201903190244458360.png",
-                        "Price": "2700"
+                        "Price": "2,700"
                     },
                     {
                         "id":3,
                         "name": "핫케익 2조각",
                         "URL": "https://www.mcdonalds.co.kr/uploadFolder/product/prol_201902111059484920.png",
-                        "Price": "2700"
+                        "Price": "2,700"
                     },
                     {
                         "id":4,
                         "name": "생수",
                         "URL": "https://www.mcdonalds.co.kr/uploadFolder/product/prol_201901290258201750.png",
-                        "Price": "1700"
+                        "Price": "1,700"
                     },
                     {
                         "id":5,
                         "name": "우유",
                         "URL": "https://www.mcdonalds.co.kr/uploadFolder/product/prol_201901290258104890.png",
-                        "Price": "1900"
+                        "Price": "1,900"
                     },
                     {
                         "id":6,
                         "name": "오렌지 주스",
                         "URL": "https://www.mcdonalds.co.kr/uploadFolder/product/prol_201901290258014770.png",
-                        "Price": "1000"
+                        "Price": "1,000"
                     }
                 ]
+            }
+        ],
+        "chaneItem": [
+            {
+                "id":"0",
+                "name":"소고기 패티",
+                "price":"2,500",
+                "event":"false",
+                "img":"https://www.mcdonalds.co.kr/kor/images/story/img_competitive01_01.jpg"
+            },
+            {
+                "id":"1",
+                "name":"치킨 패티",
+                "price":"1,500",
+                "event":"false",
+                "img":"https://www.mcdonalds.co.kr/kor/images/story/img_competitive01_02.jpg"
+            },
+            {
+                "id":"2",
+                "name":"계란",
+                "price":"700",
+                "event":"false",
+                "img":"https://www.mcdonalds.co.kr/kor/images/story/img_competitive01_03.jpg"
+            },
+            {
+                "id":"3",
+                "name":"양상추",
+                "price":"700",
+                "event":"false",
+                "img":"https://www.mcdonalds.co.kr/kor/images/story/img_competitive01_04.jpg"
+            },
+            {
+                "id":"4",
+                "name":"햄버거 빵",
+                "price":"700",
+                "event":"false",
+                "img":"https://www.mcdonalds.co.kr/kor/images/story/img_competitive01_05_01.png"
             }
         ]
     }    

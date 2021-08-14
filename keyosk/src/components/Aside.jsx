@@ -1,40 +1,32 @@
 import * as React from 'react';
 
-const Aside = ({itmeInfo}) => {
+const Aside = ({itemList}) => {
 
-    const test = React.useRef();
-    const itemList = []
-    
-    console.log('test',test)
+    const [count, setCount] = React.useState(1)
 
-    const [item, setItem] = React.useState({
-        id:null,
-        name:null,
-        price:null,
-        url:null
+    const items = itemList.map((item, idx) => {
+        console.log('item', item)
+        return (
+             <li className="myorder_item" key={idx}>
+                <img 
+                    src = {item.URL === null ? '' : item.URL} 
+                    alt = {item.name === null ? '' : item.name} 
+                />
+                <p>{item.name === null ? '' : item.name}</p>
+                <p>{item.price === null ? '' : item.price}원</p>
+                <button onClick={() => setCount(count > 0 ? count - 1 : 0)}>-</button>
+                <span style= {{margin:'0 5%'}}>{count}</span>
+                <button onClick = {() => setCount(count + 1)}>+</button>
+                <button >cancel</button>
+            </li>
+        )
     })
-    
 
-    const [totalList, setTotalLsit] = React.useState(itemList)
-
-    const [count, setCount] = React.useState(0)
 
     
 
-    React.useEffect(() => {
-        setItem({
-            id:itmeInfo === null ? '' : itmeInfo.id,
-            name:itmeInfo === null ? '' : itmeInfo.name,
-            price:itmeInfo === null ? '' : itmeInfo.Price,
-            url:itmeInfo === null ? '' : itmeInfo.URL,
-        })
-       
-        test.current = itemList.concat(itmeInfo);
-    }, [itmeInfo])
+    
 
-    // itemList.push(itmeInfo)
-    // console.log('itemList',itemList)
-    // console.log('totalList',totalList)
     
     return (
         <>
@@ -42,20 +34,9 @@ const Aside = ({itmeInfo}) => {
                 <h2>My Order</h2>
                 <p>Take Out</p>
             </header>
-            <main className="myorder_section"> 
+            <main className="myorder_section" style={!itemList ? {display:"none"} : {display:"block"}}> 
                 <ul className="myorder_wrap">
-                    <li className="myorder_item">
-                        <img 
-                            src = {item.url === null ? '' : item.url} 
-                            alt = {item.name === null ? '' : item.name} 
-                        />
-                        <p>{item.name === null ? '' : item.name}</p>
-                        <p>{item.price === null ? '' : item.price}원</p>
-                        <button onClick={() => setCount(count > 0 ? count - 1 : 0)}>-</button>
-                        <span style= {{margin:'0 5%'}}>{count}</span>
-                        <button onClick = {() => setCount(count + 1)}>+</button>
-                        <button >cancel</button>
-                    </li>
+                    {items}
                 </ul>
             </main>
             <footer className="myorder_footer">
