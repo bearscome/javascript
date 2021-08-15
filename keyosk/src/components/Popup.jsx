@@ -4,6 +4,8 @@ import '../css/common.css'
 const Popup = ({selectedItem, clicked, chageItemListData}) => {
     console.log('selectedItem', selectedItem)
     console.log('변경할 아이템', chageItemListData);
+
+    const [mainItem, setMainItem] = React.useState(0);
     const [count, setCount] = React.useState(0)
     const [clickChange, setClickChange] = React.useState(false);
     const [addMenu, setAddMenu] = React.useState([])
@@ -28,7 +30,7 @@ const Popup = ({selectedItem, clicked, chageItemListData}) => {
             changeItem = {
                 name:chageItemListData[idx].name,
                 price:chageItemListData[idx].price,
-                count:count
+                count:0
             }
 
             chageItemListData[idx].addItme = changeItem;
@@ -81,9 +83,9 @@ const Popup = ({selectedItem, clicked, chageItemListData}) => {
                     </section>
                     <section style={!clickChange ? {display:'block'} : {display:'none'}}>
                         <div>
-                            <button onClick = {() => {count < 2 ? setCount(1) : setCount(count - 1)}}>-</button>
-                            <p>{count}</p> 
-                            <button onClick = {() => {count > 0 ? setCount(count + 1) : setCount(1)}}>+</button>
+                            <button onClick = {() => {mainItem < 2 ? setMainItem(1) : setMainItem(mainItem - 1)}}>-</button>
+                            <p>{mainItem}</p> 
+                            <button onClick = {() => {mainItem > 0 ? setMainItem(mainItem + 1) : setMainItem(1)}}>+</button>
                         </div>    
                         <button onClick = {() => {setClickChange(true)}}>추가</button>
                         <button>담기</button>
