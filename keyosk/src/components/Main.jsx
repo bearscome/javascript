@@ -6,6 +6,7 @@ const Init = ({data}) => {
     const [listIdx, setListIdx] = React.useState(0)
     const [itemList, setItemsInfo] = React.useState([]);
     const [clicked, setClicked] = React.useState(false);
+    const [item, setItem] = React.useState()
 
     const menu = data.data.menu;
     const chageItemListData = data.data.chaneItem;
@@ -19,6 +20,7 @@ const Init = ({data}) => {
     const itemOnclick = (idx) => {
         
         console.log('클릭을 했을 경우', menuList[idx])
+        setItem(menuList[idx])
         setClicked(true);
         setItemsInfo([...itemList, {id:menuList[idx].id, name:menuList[idx].name, price:menuList[idx].Price, URL:menuList[idx].URL}]);
     }
@@ -43,8 +45,10 @@ const Init = ({data}) => {
         )
     })
 
-    // console.log('menu',menu)
-    // console.log('menuList',menuList)
+    const returnItme = (data) => {
+        console.log('data', data);
+    }
+
     return (
         <React.Fragment>
             <div className="wrap" className = {clicked ? 'background-block, wrap' : ''}>
@@ -80,9 +84,10 @@ const Init = ({data}) => {
                     </aside>
                 </div>
                 <Popup 
-                    selectedItem = {itemList} 
+                    selectedItem = {item} 
                     clicked={clicked}
                     chageItemListData = {chageItemListData}
+                    returnItem = {returnItme}
                 />
             </div>
         </React.Fragment>

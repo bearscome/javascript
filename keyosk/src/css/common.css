@@ -117,16 +117,6 @@ img {
   margin-bottom: 1vh;
 }
 
-.popup::after {
-  content: '';
-  position: absolute;
-  left: 0px;
-  bottom: 0px;
-  width: 100%;
-  height: 8%;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
 .popup_img {
   width: 50%;
 }
