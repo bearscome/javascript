@@ -117,6 +117,10 @@ img {
   margin-bottom: 1vh;
 }
 
+.popup .selectAdd {
+  border: 1px solid black;
+}
+
 .popup_img {
   width: 50%;
 }

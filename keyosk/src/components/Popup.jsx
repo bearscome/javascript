@@ -99,7 +99,7 @@ const Popup = ({selectedItem, clicked, chageItemListData, returnItem}) => {
     const minus = (el) => {
         switch(el.name) {
             case '소고기 패티' :
-                setSubMenuCount((state) => ({
+                setSubMenuCount(state => ({
                     ...state,
                     beef: {
                         count: state.beef.count < 1 ? 0 : state.beef.count - 1,
@@ -194,11 +194,17 @@ const Popup = ({selectedItem, clicked, chageItemListData, returnItem}) => {
     if(sendItem?.addItem) {
         console.log('sendItem?.addItem', sendItem?.addItem)
         showSubItem = Object.entries(sendItem?.addItem).map((el, idx) => {
+            const itemName = el[1]?.info?.name;
+            const itemCount = el[1]?.count;
+            const itemPrice = el[1]?.info?.price
+            const totalPrice = (Number(itemCount) * Number(itemPrice.replace(',', ''))).toLocaleString()
+            console.log('itemPrice', Number(itemPrice.replace(',', '')))
+            console.log('itemCount', itemCount)
             return (
-                <li>
-                    <p>고르신 메뉴: {el && el[1]?.info?.name}</p>
-                    <p>고르신 개수: {el && el[1]?.count}</p>
-                    <p>가격: {el && el[1]?.info?.price}</p>
+                <li className ="selectAdd" key={idx}>
+                    <p>고르신 메뉴: {el && itemName}</p>
+                    <p>고르신 개수: {el && itemCount}</p>
+                    <p>가격: {el && `￦${(itemCount > 0 ? totalPrice : 0)}`}</p>
                 </li>
             )
         }) 
