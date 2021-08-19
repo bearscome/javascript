@@ -14,9 +14,6 @@ const Aside = ({itemList}) => {
                 />
                 <p>{item.name === null ? '' : item.name}</p>
                 <p>{item.price === null ? '' : item.price}원</p>
-                <button onClick={() => setCount(count > 0 ? count - 1 : 0)}>-</button>
-                <span style= {{margin:'0 5%'}}>{count}</span>
-                <button onClick = {() => setCount(count + 1)}>+</button>
                 <button >cancel</button>
             </li>
         )

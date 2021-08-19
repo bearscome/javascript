@@ -22,7 +22,7 @@ const Init = ({data}) => {
         console.log('클릭을 했을 경우', menuList[idx])
         setItem(menuList[idx])
         setClicked(true);
-        setItemsInfo([...itemList, {id:menuList[idx].id, name:menuList[idx].name, price:menuList[idx].Price, URL:menuList[idx].URL}]);
+        // setItemsInfo([...itemList, {id:menuList[idx].id, name:menuList[idx].name, price:menuList[idx].Price, URL:menuList[idx].URL}]);
     }
     
     const returnEl = menu.map((el, idx) => {
@@ -47,7 +47,11 @@ const Init = ({data}) => {
 
     const returnItme = (data) => {
         console.log('data', data);
+        setClicked(false);
+        
     }
+
+    console.log('itemList', itemList)
 
     return (
         <React.Fragment>
@@ -80,7 +84,7 @@ const Init = ({data}) => {
                         </main>
                     </section>
                     <aside className="aside_wrap">
-                        <Aside itemList = {itemList}/>
+                        {/* <Aside itemList = {itemList}/> */}
                     </aside>
                 </div>
                 <Popup 

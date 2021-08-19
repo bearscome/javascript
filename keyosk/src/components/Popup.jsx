@@ -2,8 +2,8 @@ import * as React from 'react';
 import '../css/common.css'
 
 const Popup = ({selectedItem, clicked, chageItemListData, returnItem}) => {
-    console.log('selectedItem', selectedItem)
-    console.log('변경할 아이템', chageItemListData);
+    // console.log('selectedItem', selectedItem)
+    // console.log('변경할 아이템', chageItemListData);
 
     const [mainItem, setMainItem] = React.useState(1);
     const [subMenuCount, setSubMenuCount] = React.useState({
@@ -147,9 +147,10 @@ const Popup = ({selectedItem, clicked, chageItemListData, returnItem}) => {
     }
 
     const isDoneChange = () => {
-        returnItem(sendItem);
         setClickChange(!clickChange)
     }
+
+    const setMenu = () => { returnItem(sendItem);}
 
     if(chageItemListData.length > 0) {
         
@@ -166,7 +167,6 @@ const Popup = ({selectedItem, clicked, chageItemListData, returnItem}) => {
                     <div className="itemfunc">
                         <button onClick = {()=> {
                             minus(el);
-                            console.log('elel', el);
                         }}>-</button>
                             <p style = {el.name == "소고기 패티" ? {display:'block'} : {display:'none'}}>{el.name === "소고기 패티" && subMenuCount?.beef?.count}</p>
                             <p style = {el.name == "치킨 패티" ? {display:'block'} : {display:'none'}}>{el.name === "치킨 패티" && subMenuCount?.chicken?.count}</p>
@@ -183,23 +183,22 @@ const Popup = ({selectedItem, clicked, chageItemListData, returnItem}) => {
 
         if(selectedItem) {
             sendItem = selectedItem ? selectedItem : '';
-            sendItem['addItem'] = subMenuCount
+            sendItem['addItem'] = subMenuCount;
+            sendItem['mainItemCount'] = mainItem;
         }
-        console.log('selectedItem', selectedItem)
-        console.log('sendItem' ,sendItem)
+        // console.log('selectedItem', selectedItem)
+        // console.log('sendItem' ,sendItem)
     } else {
         alert('변경할 메뉴를 어드민에서 추가해주세요.')
     }
 
     if(sendItem?.addItem) {
-        console.log('sendItem?.addItem', sendItem?.addItem)
+        // console.log('sendItem?.addItem', sendItem?.addItem)
         showSubItem = Object.entries(sendItem?.addItem).map((el, idx) => {
             const itemName = el[1]?.info?.name;
             const itemCount = el[1]?.count;
             const itemPrice = el[1]?.info?.price
             const totalPrice = (Number(itemCount) * Number(itemPrice.replace(',', ''))).toLocaleString()
-            console.log('itemPrice', Number(itemPrice.replace(',', '')))
-            console.log('itemCount', itemCount)
             return (
                 <li className ="selectAdd" key={idx}>
                     <p>고르신 메뉴: {el && itemName}</p>
@@ -215,7 +214,10 @@ const Popup = ({selectedItem, clicked, chageItemListData, returnItem}) => {
         <React.Fragment>
             <div className="popup" style={clicked ? {display:'block'} : {display:'none'}}>
                 <header>
-                    <button onClick = {() => {setClickChange(false)}}>{!clickChange ? 'X' : '<'}</button>
+                    <button onClick = {() => {
+                        setClickChange(false)
+                        if(!clickChange) returnItem(sendItem);
+                    }}>{!clickChange ? 'X' : '<'}</button>
                 </header>
                 <main>
                     <section>
@@ -255,7 +257,7 @@ const Popup = ({selectedItem, clicked, chageItemListData, returnItem}) => {
                     <ul>
                         {showSubItem}
                     </ul>
-                    <button className="completeFunc">변경 완료</button>
+                    <button className="completeFunc" onClick = {() => {returnItem(sendItem);}}>변경 완료</button>
                 </section>
             </div>
         </React.Fragment>
