@@ -48,10 +48,13 @@ const Init = ({data}) => {
     const returnItme = (data) => {
         console.log('data', data);
         setClicked(false);
-        
+        if(data) {
+            setItemsInfo(prev => (
+               [...prev, data]
+            ))
+        }
     }
 
-    console.log('itemList', itemList)
 
     return (
         <React.Fragment>
@@ -84,7 +87,7 @@ const Init = ({data}) => {
                         </main>
                     </section>
                     <aside className="aside_wrap">
-                        {/* <Aside itemList = {itemList}/> */}
+                        <Aside itemList = {itemList && itemList}/>
                     </aside>
                 </div>
                 <Popup 
