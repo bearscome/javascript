@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log(this) // WINDOW;
+        function aa() {
+            console.log(this); 
+        }
+
+        aa(); //WINDOW;
+
+        const _object = {
+            name: 'name',
+            age: '20',
+            getUser : function(){
+                console.log(this);
+            }
+        }
+
+        _object.getUser(); // => _object -> this가 객체가 된다.
+
+        const _object_2 = {
+            data: {
+                name: 'name',
+                age: 'age',
+                getUser : function() {
+                    console.log(this);
+                }
+            }
+        }
+
+        console.log(_object_2); // => _object_2 안에 있는 data가 this가 된다.(객체 안에 객체가 this를 쓰면 해당 객체가 this가 된다.)
+
+        // 함수를 등록하거나, 변수, 또는 오브젝트를 생성하면, window에 등록이 된다
+        // 그러므로 자바스크립트 내에서 함수만 실행하고 this를 출력하면 당연히 window.함수라서 window가 출력된다
+        // this는 해당 부모가 출력이 된다. 
+        // 결국 윈도우라는 객체안에 각종 자료형이 등록되는 것이다
+        // window의 객체 안에 등록이 되는 것이다.
+
+
+        //usestrict모드를 사용하면 this-> undefined가 강제로 설정된다.
+    </script>
+</body>
+</html>
