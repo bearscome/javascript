@@ -56,6 +56,7 @@
 
 
         document.querySelector('button').addEventListener('click', function(e) {
+            // addEventListener에서 this는 window다.
             console.log(e.currentTarget) // 현재 클릭된 돔을 반환한다.
             console.log(this) // addEventListner의 this는 e.currentTarget이랑 거의 동일하다
 
@@ -83,6 +84,11 @@
 
         abc.get(); // 일반 함수는 -> map, filter, forEach등은 윈도우를 노출함
         abc._get(); // arrow함수는 bind(),call() 함수를 대체하여 사용할 수 있다 (window객체가 아닌 상위 객체를 바인드하기 때문이다.)
+
+
+        //arrowfunction에서 this는 windows가 리턴된다.
+        //arrowFunction은 this값을 재정의 하지 않는다.
+        // window객체에 새로운 글로벌 값을 지정하면 -> arrowfunction에서 this.xx -> 사용가능
     </script>
 </body>
 </html>
