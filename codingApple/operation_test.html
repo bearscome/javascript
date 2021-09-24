@@ -1,0 +1,50 @@
+<script>
+    function 더하기(a,b,c) {
+        console.log(a+b+c);
+    };
+
+    var 어레이 = [10, 20, 30];
+
+    
+    // 더하기 함수에 어레이를 집어넣고 싶다면
+    // 1. 어레이 안에 있는 값을 그대로 넣는다
+    더하기(10, 20, 30); 
+    // 2. 어레이의 인덱스 값으로 값을 추출하여 파라미터에 넣는다.
+    더하기(어레이[0], 어레이[1], 어레이[2]);
+    // 3. 파라미터에 spread연산자를 넣는다
+    더하기(...어레이); // 파라미터의 갯수가 안맞으면 NaN표시
+
+    function 더하기2(a,b,c,d) {
+        console.log(a+b+c+d)
+    };
+
+    더하기2(...어레이)
+
+
+    // spread연산자 대용은 apply가 있다
+    더하기.apply(undefined, 어레이);
+
+
+
+    // 어레이의 값을 연산하는 법
+    // apply, call
+
+    // 1. apply
+    // apply는 다른 오브젝트 안에 있는 것을 다른 오브젝트로 옮겨서 사용할 수 있게 하는 함수이다.
+    // 함수가있는오브젝트.apply(적용할 함수) (훔쳐온다.)
+    var person = {
+        인사: function() {
+            console.log(this.name + '안녕')
+        }
+    };
+
+    var person2 = {
+        name: '손흥민'
+    };
+
+    person.인사.apply(person2);
+
+    // 2. call
+    // apply와 비슷한 함수이다. 다만, apply는 파라미터를 [array]로 한꺼번에 넣을수 있고
+    // call 은 1,2,3 일반 함수처럼 집어넣는다.
+</script>
