@@ -1,0 +1,41 @@
+<script>
+    // arguments 함수의 모든 파라미터를 받아서 처리할 수 있다.
+    function fuk(a,b,c) {
+        var alist = [];
+        for(let i = 0; i < arguments.length; i++) {
+            alist.push(i);
+        }
+        console.log(alist.slice(1,alist.length));
+    }
+    fuk(1,2,3);
+
+    // ...rest rest파라미터는 모든 파라미터를 받는다
+    // arguments랑 다른점은 rest는 유연하게 사용이 가능하다.
+    // rest랑 spread랑 헷갈릴수 있는데 rest는 무조건 파라미터 자리로 들어오고 이외는 다 스프리드연산자다.
+    // rest파라미터는 무조건 맨 뒤에 사용해야한다.
+    // rest파라미터는 중복 사용이 안된다.
+    function fuk_2(a,b, ...rest) {
+        console.log(rest);
+        console.log(a,b);
+    }
+    fuk_2(1,2,3,4,5,6);
+
+    function fuk_3(a,b, ...rest) {
+        // rest는 함수이기 때문에 어레이 함수 사용가능
+        rest.forEach(e => console.log(e));
+    }
+    fuk_3(1,2,3,4,5,6);
+
+    //안되는 예시
+    function DoNotfuk_1(...rest, a,b, ) {
+        console.log(rest);
+        console.log(a,b);
+    }
+    // DoNotfuk_1(1,2,3,4,5,6);
+
+    function DoNotFuk_2(a,b, ...rest1, ...rest2) {
+        console.log(rest);
+        console.log(a,b);
+    }
+    // DoNotFuk_2(1,2,3,4,5,6);
+</script>
