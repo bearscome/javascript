@@ -1,0 +1,54 @@
+<script>
+    var aa = '123'; // <- 변수에 값을 저장
+
+    //var [], {} // <- 배열이나 객체는 변수에 reference가 저장 즉 주소 값이 저장 됨. 값이 아니라
+
+
+    var 성함1 = {
+        성:'김'
+    };
+    var 성함2 = 성함1;
+
+    //console.log(성함1);
+    
+    성함1.성 = '박';
+
+    //console.log(성함2)
+
+    /*
+        변수 혹은 객체 생성시 reference생성 
+    */
+
+    function 변경(obj) {
+        console.log('obj', obj);
+        console.log(`this ${this}`)
+        obj.name = 'park'; // 변경가능
+    };
+    
+    변경(성함1);
+
+    function 재할당(obj) {
+        console.log(obj);
+        obj = {name: 'parkl'};
+        console.log(obj);
+    };
+
+    변경(성함1)
+
+
+    /*
+        1. 이름1 = {name: '김'};
+
+        2. func 재할당() {
+            obj = {name: 'pakr'}; -> 함수 내부의 변수이기 때문에 변경이 안됨
+        };
+
+        3. 재할당(var obj = 이름1);
+
+        obj를 재할당 하지만 변수에 새로운 래퍼런스 생성하여 할당한다.
+        기존의 객체를 건드리는 것이 아니니 변경은 불가하다.
+
+
+   
+    */
+</script>
