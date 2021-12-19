@@ -57,4 +57,77 @@
         자식.__proto__ = 부모;
 
     */
+
+
+
+
+    function 학생만들기(name, age) {
+        this.name = name;
+        this.age = age;
+        this.sayhi = function() {
+            console.log(`안녕 나는 ${this.name}이야`)
+        }
+    }
+
+    const 학생2 = new 학생만들기('kim', 20)
+    const 학생3 = new 학생만들기('Park', 21)
+    const 학생4 = new 학생만들기('Lee', 21)
+
+    console.log(학생1, 학생2, 학생3, 학생4);
+
+
+
+
+    function Parent(){
+        this.name = 'Kim';
+    }
+    var a = new Parent();
+    
+    a.__proto__.name = 'Park';
+    console.log(a.name)
+
+    function Student(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    globalThis.name = '실험중';
+
+    Student.prototype.sayHi = () => {
+        console.log(`안녕 나는 ${this} 이야`)
+    }
+
+    const 학생5 = new Student('안녕', 20)
+
+    console.log(학생5.sayHi());
+
+    /*
+     Student의 sayHI는 정상적으로 출력이 안된다.
+     arrow funtion의 this는 해당 object의 this가 아니라 global한 this이기 때문이다
+     global.name이 없기 때문이다.
+    */
+
+
+
+
+    var arr = [1,2,3];
+    Array.prototype.remove3 = function(e) {
+        const filterNum = this.filter(e => e !== 3);
+        console.log(filterNum);
+        return filterNum
+    }
+
+    arr.remove3();
+    console.log(arr.remove3());
+
+    //console.log(arr); //[1,2]
+
+
+    Array.prototype.remove3 = function() {
+        for(var i = 0; i < this.length; i++) {
+            if(this[i] == 3) {
+                this.splice(i,1);
+            }
+        }
+    }
 </script>
