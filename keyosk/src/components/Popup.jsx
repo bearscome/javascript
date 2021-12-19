@@ -2,7 +2,6 @@ import * as React from 'react';
 import '../css/common.css'
 
 const Popup = ({selectedItem, clicked, chageItemListData, returnItem}) => {
-    // console.log('selectedItem', selectedItem)
     // console.log('변경할 아이템', chageItemListData);
 
     const [mainItem, setMainItem] = React.useState(1);
@@ -45,18 +44,6 @@ const Popup = ({selectedItem, clicked, chageItemListData, returnItem}) => {
                     }
                 }));
                 break;
-                // setSubMenuCount({
-                //     ...subMenuCount,
-                //     subMenuCount: {
-                //         beef: {
-                //             count : subMenuCount.chicken.count += 1
-                //         }
-                //     }
-                // });
-                /**
-                 * () => ()이건 무슨 뜻 일까? 즉시 실행 함수인가?
-                 * setState할 때, 함수를 선언하는 것과 객체를 넣는것의 차이는 무엇인가?
-                 */
             case '치킨 패티' :
                 setSubMenuCount((state) =>({
                     ...state,
@@ -150,7 +137,37 @@ const Popup = ({selectedItem, clicked, chageItemListData, returnItem}) => {
         setClickChange(!clickChange)
     }
 
-    const setMenu = () => { returnItem(sendItem);}
+    const resetItem = () => {
+        setSubMenuCount({
+            beef: {
+                count: 0,
+                info: chageItemListData[0]
+            },
+            chicken: {
+                count: 0,
+                info: chageItemListData[1]
+            },
+            egg: {
+                count: 0,
+                info: chageItemListData[2]
+            },
+            lettuce: {
+                count: 0,
+                info: chageItemListData[3]
+            },
+            buns: {
+                count: 0,
+                info: chageItemListData[4]
+            }
+        })
+    }
+
+    const onSubmit = () => {
+        resetItem();
+        returnItem(sendItem)
+    }
+
+
 
     if(chageItemListData.length > 0) {
         
@@ -257,7 +274,7 @@ const Popup = ({selectedItem, clicked, chageItemListData, returnItem}) => {
                     <ul>
                         {showSubItem}
                     </ul>
-                    <button className="completeFunc" onClick = {() => {returnItem(sendItem);}}>변경 완료</button>
+                    <button className="completeFunc" onClick = {() => {onSubmit();}}>변경 완료</button>
                 </section>
             </div>
         </React.Fragment>

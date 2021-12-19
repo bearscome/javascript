@@ -18,42 +18,22 @@ const Init = ({data}) => {
     }
 
     const itemOnclick = (idx) => {
-        
-        console.log('클릭을 했을 경우', menuList[idx])
         setItem(menuList[idx])
         setClicked(true);
-        // setItemsInfo([...itemList, {id:menuList[idx].id, name:menuList[idx].name, price:menuList[idx].Price, URL:menuList[idx].URL}]);
     }
     
-    const returnEl = menu.map((el, idx) => {
-        return (
-            <li className = "menu_list" key = {el.id} onClick = {() => {menuOnClick(idx)}}>
-                <img src = {el.img} alt = {el.name}/>
-                <p>{el.name}</p>
-                <p>{el.event == 'true' && '이벤트 중' }</p>
-            </li>
-        )
-    })
-
-    const returnELs = menuList.map((el, idx) => {
-        return (
-            <li className = "menu_list" key = {el.id} onClick = {() => itemOnclick(idx)}>
-                <img src ={el.URL} alt = {el.name}/>
-                <p>{el.name}</p>
-                <p>{el.Price}원</p>
-            </li>
-        )
-    })
-
     const returnItme = (data) => {
-        console.log('data', data);
         setClicked(false);
         if(data) {
             setItemsInfo(prev => (
                [...prev, data]
             ))
         }
+
+
+        console.log(itemList)
     }
+
 
 
     return (
@@ -71,7 +51,17 @@ const Init = ({data}) => {
                             <h2 className="title">상품을 담아주세요.</h2>
                             <section className="menu_section">
                                 <ul className="menu_wrap">
-                                {returnEl}
+                                    { 
+                                        menu && menu.map((el, idx) => {
+                                            return (
+                                                <li className = "menu_list" key = {el.id} onClick = {() => {menuOnClick(idx)}}>
+                                                    <img src = {el.img} alt = {el.name}/>
+                                                    <p>{el.name}</p>
+                                                    <p>{el.event == 'true' && '이벤트 중' }</p>
+                                                </li>
+                                            )
+                                        })
+                                    }
                                 </ul>
                             </section>
                             <section className="item_main">
@@ -80,7 +70,17 @@ const Init = ({data}) => {
                                 </h2>
                                 <div className="item_section">
                                     <ul className="item_wrap">
-                                        {returnELs}
+                                        {
+                                            menuList && menuList.map((el, idx) => {
+                                                return (
+                                                    <li className = "menu_list" key = {el.id} onClick = {() => itemOnclick(idx)}>
+                                                        <img src ={el.URL} alt = {el.name}/>
+                                                        <p>{el.name}</p>
+                                                        <p>{el.Price}원</p>
+                                                    </li>
+                                                )
+                                            })
+                                        }
                                     </ul>
                                 </div>
                             </section>
