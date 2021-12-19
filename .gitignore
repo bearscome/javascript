@@ -1,2 +1,5 @@
 /타입스크립트/node_modules
 /test-tsc/node_modules
+chating/.gitignore
+chating/package.json
+chating/package-lock.json
