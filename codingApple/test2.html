@@ -59,6 +59,12 @@
 
             this.odd = odd;
             this.even = even;
+        },
+
+        get bb() {
+            let fullData = [...this.odd, ...this.even];
+            console.log(fullData);
+            return fullData.sort();
         }
     }
 </script>
