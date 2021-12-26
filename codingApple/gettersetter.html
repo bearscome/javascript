@@ -1,0 +1,66 @@
+<script>
+    var 사람 = {
+        name: 'Park',
+        age: 30,
+        nextAge() {
+            return this.age + 1;
+        },
+        setAge(age) {
+            this.age = parseInt(age);
+        }
+    }
+    /*
+        직접적으로 수정하는 것이 아닌 함수를 이용하여 객체를 수정하는 것은
+        1. 객체의 자료가 복잡할 때 이득이기 때문이다.
+         객체가 크기가 커지면 사람.age.age.age.age -> this.age = ~~~로 수정하는 것이 깔끔하다.
+        2. 객체의 자료 수정시 편리하다
+         객체를 수정할 때 직접적으로 수정하는 것보다 함수를 이용하여 수정하는 것이 오류를 막을 수 있다
+         사람.age = '30' <- 숫자형이 아닌 문자형으로 작성하면 오류를 낼 수 있다
+         setAge라는 함수를 만들어 문자형으로 들어온 파라미터를 숫자형으로 변경하여 객체를 수정하는 것이 좋다.
+    */
+    사람.nextAge();
+
+
+    var 사람2 = {
+        name: 'Park',
+        age: 30,
+        get nextAge() {
+            return this.age + 1;
+        },
+        set setAge(age) {
+            this.age = parseInt(age);
+        },
+    }
+
+    /*
+        공통
+         함수를 프로퍼티화 하는 것
+         사람2.nextAge -> 31;
+         사람2.setAge = 25 -> 25
+        get
+         1.get은 값을 가져오는 것이기 때문에 return이 꼭 있어야 한다
+         2 get은 파라미터가 있으면 안된다.
+
+        set
+         1. set함수는 수정하는 것이기 때문에 파라미터가 1개가 있어야한다.
+         2. 파라미터 2개는 안된다 왜?
+    */
+
+
+    class 인간 {
+        constructor() {
+            this.name = 'Park';
+            this.age = 30
+        }
+
+        get nextAge(){
+            return this.age + 1;
+        }
+
+        set setAge(나이) {
+            this.age = 나이;
+        }
+    }
+
+    var 인간1 = new 인간();
+</script>
