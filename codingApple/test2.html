@@ -1,0 +1,64 @@
+<script>
+    class 강아지 {
+        constructor(type, color) {
+            this.type = type;
+            this. color = color
+        }
+    };
+
+    var 강아지1 = new 강아지('말티즈', 'white');
+    var 강아지2 = new 강아지('진돗개', 'brown');
+
+
+    class 고양이 extends 강아지 {
+        constructor(type, color, age) {
+            super(type, color);
+            this.age = age;
+        }
+
+        한살먹기() {
+            return this.age + 1;
+        }
+    };
+
+    var 고양이1 = new 고양이('코숏', 'white', 5);
+    var 고양이2 = new 고양이('러시안블루', 'brown', 2);
+
+    class unit {
+        constructor() {
+            공격력 = 5;
+            체력 = 100;
+        }
+
+        get battlePoint() {
+            return this.공격력 + this.체력;
+        };
+
+        set heal(heal) {
+            this.heal = this.heal + parseInt(heal);
+        }
+    }
+
+    var data = {
+        odd: [],
+        even: [],
+
+        aa(...array) {
+            const odd = [];
+            const even = [];
+
+            array.forEach(e => {
+                if(e % 2 == 0) {
+                    even.push(e)
+                } else {
+                    odd.push(e)
+                }
+            })
+
+            console.log(odd, even)
+
+            this.odd = odd;
+            this.even = even;
+        }
+    }
+</script>
