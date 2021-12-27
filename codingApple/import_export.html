@@ -1,0 +1,22 @@
+<script type = "module"> // <- import, 가능
+    import a from '경로';
+    import {a, b} from '경로';
+    import c, {a,b} from '경로';
+    import c as 변수, {a as 테스트} from '경로';
+    import c, {* as 변수} from '경로';
+
+    // es6이전
+    /*
+        export 파일에는
+        module.export.a = 10;
+
+        import 파일에는
+        var 파일  = reuire('/경로');
+    */
+
+
+    /*
+        import, export는 IE호환성이 없음
+        '<script src = ""> </script>로 해야함
+    */
+</script>
