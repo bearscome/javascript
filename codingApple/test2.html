@@ -1,4 +1,127 @@
 <script>
+    class 강아지들{
+        constructor(type, color){
+            this.type = type;
+            this.color = color;
+        }
+
+        한살먹기() {
+            if(!this.age) console.error('에러')
+            console.log(this instanceof 강아지들)
+            // instanceof는 자신이 속한 클래스를 Boolean형으로 반환한다.
+            // __proto__.chain형태로 확인
+            this.age++;
+        }
+    }
+
+    var 강아지1 = new 강아지들('말티즈', 'white');
+    var 강아지2 = new 강아지들('진돗개', 'brown');
+
+
+    class 고양이들 extends 강아지들 {
+        constructor(type, color, age) {
+            super(type, color);
+            this.age = age;
+        }
+    };
+
+    var 고양이1 = new 고양이들('코숏', 'white', 5);
+    var 고양이2 = new 고양이들('러시안블루', 'brown', 2);
+
+
+
+    class Unit {
+        constructor() {
+            this.공격력 = 5,
+            this.체력 = 100;
+        }
+
+        get battlePoint() {
+            return this.공격력 + this.체력;
+        }
+
+        set heal(힐) {
+            this.체력 = this.체력 + 힐;
+        }
+    }
+
+    var unit1 = new Unit();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <script>
     class 강아지 {
         constructor(type, color) {
             this.type = type;
@@ -50,6 +173,9 @@
             array.forEach(e => {
                 if(e % 2 == 0) {
                     even.push(e)
+                    // arrow function의 this는 현재 오브젝트의 this를 가르키니 
+                    // 배열을 만들어서 할 필요가 없다
+                    // this.even.push(e);
                 } else {
                     odd.push(e)
                 }
@@ -64,7 +190,7 @@
         get bb() {
             let fullData = [...this.odd, ...this.even];
             console.log(fullData);
-            return fullData.sort();
+            return fullData.sort(funtion () {return a - b}); // 숫자정렬
         }
     }
-</script>
+</script> -->
