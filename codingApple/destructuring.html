@@ -1,0 +1,43 @@
+<script>
+
+    var arr = [1,2,3];
+    var [a,b,c] = arr;
+    console.log(arr,a,b,c);
+ 
+    var {name, age} = {name: 'Kim', age :30 }
+    
+    /*
+        var {name: 변수명} = {name: 'Kim'};
+        변수명을 만들고 싶을 때는 변수명을 뒤에다가 할당한다.
+        ex) {name: firstName} = {name: 'Kim'};
+         -> firstName = 'Kim';
+
+         var {name: firstName = '강'} -> default로 설정 가능
+    */
+
+    function objTest ({name, age}) {
+        // 파라미터 자리에 구조 분해 할당을 하여 변수로 선언할 수 있다.
+        // 파라미터는 어차피 변수이기 때문에 obj.name, obj.age의 값인(특정 값)이랑 key, 파라미터 선언과 같다면
+        // 자동으로 변수로 선언된다.
+        console.log(name);
+        console.log(age);
+    };
+
+    var obj = {
+        name:'KIM',
+        age:50
+    }
+    objTest(obj);
+
+    function arrTest([one, two, three]) {
+        console.log(one);
+        console.log(two);
+        console.log(three);
+    };
+
+    arrTest(arr);
+
+    
+
+
+</script>
