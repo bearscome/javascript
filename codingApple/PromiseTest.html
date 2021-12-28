@@ -1,0 +1,93 @@
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<img id="test" src="https://codingapple1.github.io/kona.jpg"> 
+
+<script>
+    var img = document.getElementById('test');
+
+
+    var loadImg = new Promise((resolve, rejected) => {
+        //성공
+        img.addEventListener('load', (event) => {
+            console.log(event, 'asd')
+            resolve('성공')
+            
+        })
+        //실패
+        img.addEventListener('error', (event) => {
+            console.log(event, 'asdeeee')
+            rejected('성공')
+        })
+    })
+
+    loadImg
+    .then((result) => {
+        console.log(result)
+    })
+    .catch((result) => {
+        console.log(result)
+    });
+
+    
+    console.log('img', img);
+
+
+    const getText = new Promise((resolve, reject) => {
+        $.ajax({
+            type: 'get',
+            url: 'https://codingapple1.github.io/hello.txt'
+        }).done((done) => {
+            resolve(done);
+        })
+    });
+
+    
+    const getText2 = new Promise((resolve, reject) => {
+        $.ajax({
+            type: 'get',
+            url: 'https://codingapple1.github.io/hello2.txt'
+        }).done((done) => {
+            resolve(done);
+        })
+    });
+
+
+    getText.then((result) => {
+        console.log('result' ,result);
+
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                type: 'get',
+                url: 'https://codingapple1.github.io/hello2.txt'
+            }).done((done) => {
+                resolve(done);
+            })
+        });
+    }).then((test) => {
+        console.log('test', test);
+       
+    })
+
+
+
+    var 프로미스 = new Promise(function(성공, 실패) {
+        $.get('https://codingapple1.github.io/hello.txt').done(function(결과){
+          성공(결과)
+        });
+    });
+    
+    프로미스.then(function(결과) {
+      console.log(12,결과);
+    
+      var 프로미스2 = new Promise(function(성공, 실패) {
+        $.get('https://codingapple1.github.io/hello2.txt').done(function(결과){
+          성공(결과)
+        })
+      });
+    
+      return 프로미스2;
+    
+    }).then(function(결과) {
+        console.log(34,결과);
+    }) 
+</script>
