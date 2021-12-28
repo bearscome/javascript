@@ -1,0 +1,100 @@
+<script>
+    const test = new Promise((resolve, reject) => {
+
+        setTimeout(() => {
+            let num = 1+2;
+
+            resolve(num);
+        },5000)
+        
+    });
+
+    test
+    .then((result) => {
+        console.log(`결과는 ${result} 입니다`);
+    })
+    .catch(() => {
+
+    });
+</script>
+
+
+<script>
+    var 프로미스 = new Promise();
+
+    프로미스.then(function() {
+
+    }).catch(function() {
+
+    });
+
+    /*
+    1. 콜백함수완느 다르게 순차적으로 뭔가를 실행할 때 코드가 옆으로 길어지지 않습니다. then 함수를 붙여서 순차적으로 실행하니까.
+    2. 콜백함수는 불가능한 '실패시 특정코드를 실행해주세요'라고 코드를 짤 수 있습니다(catch)
+    */
+
+    var 프로미스 = new Promise(function(resolve, reject) {
+        resolve();
+    });
+    프로미스.then().catch();
+
+    /*
+    1. 프로미스 안에 모든 것이 가능 (어려운 연산, 서버데이터등)
+    2. Promise()안에 콜백함수를 하나 추가해주면 그 안에서 성공/실패 판정 가능
+    3. resolve -> 성공, reject -> 실패
+    */
+
+    var 프로미스 = new Promise(function(resolve, reject) {
+        var 어려운연산 = 1 + 1;
+        resolve()
+    })
+
+    프로미스.then(function() {
+        console.log('연산이 완료되었습니다.')
+    })
+
+    /*
+    Promise()안에 어려운 수학 연산을 해주는 기능을 추가.
+    그 연산이 완료되면 성공() 코드를 실행하도록 코드 추가.
+    (일반 코드들은 저렇게 위 아래로 나란히 적으면 그냥 차례대로 실행)
+
+    1. 프로미스 내의 1+1이라는 어려운 수학연산이 완료되면 성공()판정을 내려며
+    2. 성공시 then() 내의 코드를 실행
+    이렇게 Promise를 사용하시면 이상한 콜백함수패턴 대신 멋있는 then사용 가능
+    
+    */
+
+    var 프로미스 = new Promise(function(resolve, reject) {
+        var 어려운연산 = 1 + 1;
+        resolve(어려운연산)
+    })
+
+    프로미스.then(function(결과) {
+        console.log('연산이 완료되었습니다.' + 결과);
+    })
+
+    /*
+    참고로 연산 결과를 then 안에서 활용하고 싶다면
+    resolve()안에 어려운연산 값을 넣어주면 됨
+    그럼 then함수 안에서 파라미터의 형태로 그 결과를 사용할 수 있다.
+    */
+
+
+    /*
+    Promise 몇가지 특징
+    1. 일단 new Promise()로 생성된 변수를 콘솔창에 출력하면 현재 상태를 알 수 있다.
+    성공/실패 판정 전에는 <pending>이라고 나오며,
+    성공 후엔 <resolved>, 실패 후엔 <rejected>로 출력
+    이렇게 프로미스 오브젝트들은 3가지 상태가 있다.
+    그리고 성공을 실패나 대기상태로 다시 되돌릴 순 없다.
+
+    2. Promise는 동기를 비동기로 만들어 주는 코드가 아니다.
+    Promise는 비동적 실행과 전혀 상관이 없다.
+    그냥 코딩을 예쁘게 할 수 있는 일종의 디자인 패턴이다.
+    예를 들면.. Promise 안에 10초 걸리는 어려운 연산을 시키면 10초 동안 브라우저가 멈춘다.
+    10초 걸리는 연산을 해결될 때 까지 대기실에 넣는 것이 아니다.
+
+    그냥 원래 자바스크립트는 평상시엔 동기적으로 실행이 되며 비동기 실행을 ㅇ지원하는 특수한 함수들 덕분에 
+    가끔 비동적으로 실행이될 뿐이다.
+    */
+</script>
