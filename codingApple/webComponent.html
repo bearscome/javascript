@@ -1,0 +1,22 @@
+<script>
+    class Component extends HTMLElement {
+        connectedCallback() {
+            let text = this.getAttribute('text');
+            this.innerHTML = `<label>${text}</label><input/>`
+        }
+
+        static get observedAttributes() {
+            return ['text'];
+        }
+
+        attributeChangedCallback(text) {
+            console.log(this.getAttribute('text'), text);
+        }
+    }
+
+    customElements.define('test-label', Component);
+</script>
+
+<test-label text = '테스트 텍스트'>
+    안녕
+</test-label>
