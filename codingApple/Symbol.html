@@ -1,0 +1,83 @@
+<script>
+    //Symbole 자료형 만드는 법
+    var 심볼 = Symbol('설명');
+    /*
+     Symbol() 함수를 이용하고 설명을 넣으면 된다.
+     그냥 설명 하나만 저장할 수 있는 자료형이다.
+    */
+
+    //Symbol은 Object자료형에 비밀스런 key값을 부여하고 싶을 때 사용
+    //person[심볼명] = 넣을자료;
+    //이렇게 쓰면 Object자료형에 Symbol을 이름으로 가진 자료를 저장가능
+
+    var person = {name: 'Kim'};
+    person.weight = 100;
+
+    var weight = Symbol("내 진짜 몸무게");
+    person[weight] = 200;
+
+    console.log(person)
+    /*
+     Symbol의 자료형의 특징
+     1. for문에서 노출되지 않는다 -> 시크릿한 내용을 저장하고 싶을 때 Symbol을 이용하여 자료 저장
+    */
+
+    //심볼을 직접 입력하려면
+    var height = Symbol('내 키');
+    var person = {name:'Kim', [height]: 180};
+    //Object 자료형에 직접 입력하실 때는 저렇게 대괄호 안에 심볼명을 담아주시면 됩니다.
+
+
+    //Symbol 자료형 특징1. 설명은 설명
+    /*
+    Symbol() 안에는 간단한 설명을 저장할 수 있다고 했습니다.
+    근데 같은 설명을 가졌다고 해서 같은 Symbol이 아닙니다.
+    각각 다른 유니크한 값이다.
+    var a = Symbol('설명1');
+    var b = Symbol('설명1');
+    console.log(a === b);
+    위의 예제에서 a와 b의 실볼의 설명 값이 같은에도 불고하고 두개는 false이다.
+    */
+
+    //Symbole 자료형 특징2. Symbol.for()로 만드는 전역 심볼
+    /*
+    변수처럼 뭔가 같은 값을 가지면 같은 변수로 취급해주는 전역 심볼을 만들어 쓸 수 있다.
+    그러고 싶으면 Symbole() -> Symbol.for()로 만듬
+    var a = Symbol.for('설명1');
+    var b = Symbol.for('설명1');
+    console.log(a===b);
+    위의 예제를 출력하면 true라는 값이 남는다.
+    Symbol.for()은 새로운 심볼을 만들 때,
+    설명이 같으면 그 설명을 가지고 있는 Symbol을 새로운 Symbol에 할당하기 때문이다.
+    
+    //Symbol 자료형 특징3. 기본 내장 Symbol들
+    Array, Object 자료형을 만들 때 몰래 붙어있는 기본 Symbol이 있다.
+    var array = [2,3,4];
+    console.log(array[Symbol.iterator]);
+
+    심볼은 자료를 저장할 때 쓰는 자료형 -> 반복문에서 사용해도 출력됮 ㅣ않는다.
+    */
+
+
+    /*
+    심볼은 오브젝트에서 숨기고 싶은 자료형에 사용 가능하다.
+    var height = Symbol('내 키')
+
+    var a = {
+        a:'kim',
+        [height]: 160
+    };
+    a[height] = 160;
+
+    Symbol(aa) !== Symbole(aa)
+    설명이 같아도 심볼은 유니크한 값을 가지기 때문에 다르다.
+
+    Symbol.for(aa) === Symbol.for(aa)
+    Symbol를 전역 값으로 저장하고 싶다면 Symbol.for()을 이용하면 된다.
+    설명 값이 같으면 기존에 있던 심볼 값을 선언한 변수에 같은 값을 할당한다.
+
+    심볼은 array,Object 자료형 만들 때 기본적으로 할당이 된다.
+    for of 사용할 때 도와주는 것이 Symbol이다.
+    
+    */
+</script>
