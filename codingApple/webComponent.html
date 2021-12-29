@@ -20,3 +20,149 @@
 <test-label text = '테스트 텍스트'>
     안녕
 </test-label>
+
+
+
+
+
+
+
+<input type="range" />
+<div class="mordor"></div>
+
+<custom-input></custom-input>
+<label>왜 나까지 빨개짐?</label>
+<script>
+    /*
+    가끔 보면 복잡한 HTML 태그가 있는데
+    <input type="range" />
+    shadow DOM : 일반적으로 볼 수 없는 숨겨진 HTML
+    */
+
+
+
+    //shadow DOM 만드는 법
+    document.querySelector('.mordor').attachShadow({'mode': 'open'});
+    document.querySelector('.mordor').shadowRoot.innerHTML = '<p>안녕하세요.</p>'
+    /*
+     이러면 <div> 안에 <p>태그를 숨길 수 있다.
+     1. 우선 attachShadow()라는 걸 써서 shadowRoot라는 공간을 만든다.
+     2. shadowRoot라는 여기에 원하는 HTML을 넣는다.
+     거의 모든 <태그>는 shadowRoot를 오픈할 수 있고,
+     shadowRoot안에 넣은걸 전부 shadow DOM이라고 칭하는데
+     이걸 굳이 써야할 이유는 모르곘고 별 장점은 없어보이지만,
+     web Component문법과 합해야 진가를 발휘한다.
+    */
+
+    // Web Component 쓰면 html 함수처럼 묶여서 재사용할 수 있다는데
+    // 여기에 스타일을 넣고 싶을 경우 약간의 문제가 생길 수 있다
+    class 클래스 extends HTMLElement {
+        connectedCallback() {
+          this.innerHTML = `<label>이름을 입력하쇼</label><input>
+            <style> label { color : red } </style>`
+        }
+      }
+      
+      customElements.define("custom-input", 클래스);
+
+      /*
+       스타일 까지 함께 컴포넌트화하고 싶드면 컴포넌트 안에 <style>을 집어 넣는게 좋다
+       근데 이렇게 할 겨웅 label태그를 빨간색으로 스타일링 했는데,
+       컴포넌트와 관계 없는 태그까지 영향을 받는다.
+       css적으로 class를 만들어서 해결한다고 해도 다른 곳과 class가 겹치는 문제가 있다.
+       그럴 땐 스타일을 shdow DOM을 열어서 거기 집어넣으면 된다.
+       왜냐면 shadow DOM에 있는 스타일은 밖에 영향을 끼치지 않아서 그렇다.
+      */
+      class 클래스 extends HTMLElement {
+        connectedCallback() {
+          this.attachShadow({mode : 'open'});
+          this.shadowRoot.innerHTML = `<label>이름을 입력하쇼</label><input>
+            <style> label { color : red } </style>`
+        }
+      }
+      
+      customElements.define("custom-input", 클래스);
+
+      /*
+      스타일과 태그들을 전부 shadow DOM으로 집어넣어놨더니
+        진짜 다른 태그들 스타일을 오염시키지 않습니다.
+        그래서 대부분 Web Component 만들 때 shadow DOM을 활용합니다.
+        이래야 진정한 의미의 html 모듈화 개발이 가능합니다. 
+        다른 모듈들이 서로 영향을 끼치는걸 막을 수 있으니까요. 
+      */
+
+
+
+      /*
+        html 임시보관함 <template> 태그
+
+ 
+
+        컴포넌트 만들 때 html이 너무 길어지면
+        
+        <template>태그에 잠깐 보관해두고 집어넣을 수도 있습니다.
+        
+         
+        
+         
+        
+         <custom-input></custom-input>
+        
+          <template id="template1">
+            <label>이메일을 입력하쇼</label><input>
+            <style>label { color : red }</style>
+          </template>
+        
+          <script>
+            class 클래스 extends HTMLElement {
+              connectedCallback() {
+                this.attachShadow({mode : 'open'});
+                this.shadowRoot.append(template1.content.cloneNode(true));
+              }
+            }
+            customElements.define("custom-input", 클래스);
+        
+          
+        1. <template>은 특수한 태그인데 여기에 적은 html은 렌더링되지 않습니다.
+        2. 그래서 거기에 html들 잠깐 보관하고 
+        3. this.shadowRoot.append(template1.content.cloneNode(true)) 이런 식으로 집어넣으면 됩니다. 
+        그냥 <template>태그 사용법입니다. 
+        이러면 html이 길어져도 이쁘게 코드짤 수 있겠군요. 
+        
+         
+        
+         
+        
+        이벤트 리스너를 부착하고 싶다면
+        그냥 addEventListener 아무데나 코드짜서 부착하면 됩니다.
+        심지어 shadow DOM에도 이벤트리스너 부착 가능합니다.
+        알아서 합시다. 
+         <custom-input></custom-input>
+        
+          <template id="template1">
+            <label>이메일을 입력하쇼</label><input>
+            <style>label { color : red }</style>
+          </template>
+        
+          <script>
+            class 클래스 extends HTMLElement {
+              connectedCallback() {
+                this.attachShadow({mode : 'open'});
+                this.shadowRoot.append(template1.content.cloneNode(true));
+                let el = this.shadowRoot.querySelector('label');
+                el.addEventListener('click', function(){
+                  console.log('클릭함')
+                })
+              }
+            }
+            customElements.define("custom-input", 클래스);
+         
+        
+        저는 shadow DOM 안의 label 태그를 누르면 콘솔창에 '클릭함' 출력하는 
+        이벤트리스너를 부착해봤습니다.
+        이런 식으로 개발하면 자바스크립트도 컴포넌트안에 담아서 보관할 수도 있습니다. 
+        이제 원하는 곳에서 class 만 export 해서 가져다 쓰면 컴포넌트로 모듈식 개발이 가능합니다. 
+        
+        */
+         
+</script>
