@@ -4,9 +4,6 @@ import Image from 'next/image';
 const Item = ({item}) => {
   const {image_link, name, price, description} = item;
   
-  console.log({
-    image_link, name, price, description
-  });
 
   return (
     <>
