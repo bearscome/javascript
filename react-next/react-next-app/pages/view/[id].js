@@ -1,8 +1,5 @@
 import axios from "axios";
-import { useRouter } from "next/router";
-import { useEffect,useState } from "react";
 import Item from "../../src/component/Item";
-import { Divider, Header, Loader } from "semantic-ui-react";
 import Head from "next/head";
 
 const Post = ({item}) => {
