@@ -38,3 +38,8 @@ Next js 모든 페이지 사전 렌더링 (Pre-rendering)
 Link, router를 쓰는 이유는
 location.href 는 새로고침이 되면서 재랜더링이 된다. 그러면 ssp를 사용하는 의미가 없다.
 그렇기 때문에 Link, router을 사용해야한다.
+
+
+환경변수
+// node js -> process.env.변수명
+// browser -> process.env.NEXT_PUBLIC_변수명

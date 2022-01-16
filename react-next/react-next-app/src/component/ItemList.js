@@ -16,6 +16,7 @@ export default function ItemList({list}) {
                 <Link href={`/view/${e.id}`}>
                   <a>
                     <div className={styles.wrap}>
+                      {/* <img src = {e.image.link} /> */}
                       <Image src={e.image_link} alt={e.name} width={'100%'} height={'100%'} className={styles.img_item}/>
                       <strong className={styles.tit_item}>{e.name}</strong>
                       <strong className={styles.txt_info}>{e.price}</strong>
